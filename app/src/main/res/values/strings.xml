@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Multisensor Tool</string>
+    <string name="app_surname">Test your phone!</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_accelerometer">Accelerometer</string>
+    <string name="title_activity_gravity">Gravity</string>
+    <string name="title_activity_light">Light</string>
 </resources>
