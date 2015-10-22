@@ -13,19 +13,20 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
-public class Light extends AppCompatActivity  implements SensorEventListener {
+public class Humidity extends AppCompatActivity implements SensorEventListener {
+
     private SensorManager senSensorManager;
-    private Sensor senLight;
+    private Sensor senHumidity;
 
     TextView textViewValue;
 
     protected void registerSensor(){
-        senSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
-        senLight = senSensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
-        if(senLight==null){
-            textViewValue.setText("Light sensor unavailable");
+        senSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        senHumidity = senSensorManager.getDefaultSensor(Sensor.TYPE_RELATIVE_HUMIDITY);
+        if(senHumidity==null){
+            textViewValue.setText("Humidity sensor unavailable");
         }else{
-            senSensorManager.registerListener(this, senLight , SensorManager.SENSOR_DELAY_NORMAL);
+            senSensorManager.registerListener(this, senHumidity , SensorManager.SENSOR_DELAY_NORMAL);
         }
 
     }
@@ -40,17 +41,16 @@ public class Light extends AppCompatActivity  implements SensorEventListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_light);
+        setContentView(R.layout.activity_humidity);
         loadToolbar();
-        textViewValue = (TextView)findViewById(R.id.textView_light_value);
+        textViewValue = (TextView)findViewById(R.id.textView_humidity_value);
         registerSensor();
     }
 
     @Override
     public void onSensorChanged(SensorEvent event) {
         Sensor mySensor = event.sensor;
-
-        if (mySensor.getType() == Sensor.TYPE_LIGHT) {
+        if (mySensor.getType() == Sensor.TYPE_RELATIVE_HUMIDITY) {
             textViewValue.setText(String.format("Value: %s lux", Float.toString(event.values[0])));
         }
     }
@@ -72,7 +72,9 @@ public class Light extends AppCompatActivity  implements SensorEventListener {
 
     protected void onResume() {
         super.onResume();
-        senSensorManager.registerListener(this, senLight, SensorManager.SENSOR_DELAY_NORMAL);
+        senSensorManager.registerListener(this, senHumidity, SensorManager.SENSOR_DELAY_NORMAL);
     }
 
 }
+
+

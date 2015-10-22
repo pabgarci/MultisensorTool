@@ -5,4 +5,11 @@
     <string name="title_activity_accelerometer">Accelerometer</string>
     <string name="title_activity_gravity">Gravity</string>
     <string name="title_activity_light">Light</string>
+    <string name="title_activity_gps">GPS</string>
+    <string name="title_activity_network">Network</string>
+    <string name="title_activity_humidity">Humidity</string>
+    <string name="title_activity_pressure">Pressure</string>
+    <string name="title_activity_proximity">Proximity</string>
+    <string name="title_activity_compass">Compass</string>
+    <string name="title_activity_magnetic_field">MagneticField</string>
 </resources>

@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         } ;
         Integer[] imageId = {
                 R.drawable.ic_car_white_48dp, //Accelerometer
+                R.drawable.compass_invert, //Gravity
                 R.drawable.ic_weight_white_48dp, //Gravity
                 R.drawable.ic_gps_fixed_white_48dp, //GPS
                 R.drawable.gyroscope, //Gyroscope
@@ -74,12 +75,16 @@ public class MainActivity extends AppCompatActivity {
                     Intent intent = new Intent(getApplicationContext(), Accelerometer.class);
                     startActivity(intent);
                         break;
+                    case "Compass":
+                        Intent intent15 = new Intent(getApplicationContext(), Compass.class);
+                        startActivity(intent15);
+                        break;
                     case "Gravity":
                         Intent intent1 = new Intent(getApplicationContext(), Gravity.class);
                         startActivity(intent1);
                         break;
                     case "GPS":
-                        Intent intent2 = new Intent(getApplicationContext(), Accelerometer.class);
+                        Intent intent2 = new Intent(getApplicationContext(), GPS.class);
                         startActivity(intent2);
                         break;
                     case "Gyroscope":
@@ -87,11 +92,11 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intent3);
                         break;
                     case "Humidity":
-                        Intent intent4 = new Intent(getApplicationContext(), Accelerometer.class);
+                        Intent intent4 = new Intent(getApplicationContext(), Humidity.class);
                         startActivity(intent4);
                         break;
                     case "Light":
-                        Intent intent5 = new Intent(getApplicationContext(), Accelerometer.class);
+                        Intent intent5 = new Intent(getApplicationContext(), Light.class);
                         startActivity(intent5);
                         break;
                     case "Linear Acceleration":
@@ -103,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intent7);
                         break;
                     case "Network":
-                        Intent intent8 = new Intent(getApplicationContext(), Accelerometer.class);
+                        Intent intent8 = new Intent(getApplicationContext(), Network.class);
                         startActivity(intent8);
                         break;
                     case "Orientation":
@@ -111,11 +116,11 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intent9);
                         break;
                     case "Pressure":
-                        Intent intent10 = new Intent(getApplicationContext(), Accelerometer.class);
+                        Intent intent10 = new Intent(getApplicationContext(), Pressure.class);
                         startActivity(intent10);
                         break;
                     case "Proximity":
-                        Intent intent11 = new Intent(getApplicationContext(), Accelerometer.class);
+                        Intent intent11 = new Intent(getApplicationContext(), Proximity.class);
                         startActivity(intent11);
                         break;
                     case "Storage":

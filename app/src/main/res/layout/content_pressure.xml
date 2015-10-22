@@ -7,7 +7,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:showIn="@layout/activity_light" tools:context="es.pabgarci.multisensortool.Light">
+    tools:showIn="@layout/activity_pressure" tools:context="es.pabgarci.multisensortool.Pressure">
 
     <LinearLayout
         android:orientation="vertical"
@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textSize="15sp"
-            android:id="@+id/textView_light_value" />
+            android:id="@+id/textView_pressure_value" />
 
 
 

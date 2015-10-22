@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="es.pabgarci.multisensortool" >
 
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -31,6 +34,41 @@
         <activity
             android:name=".Light"
             android:label="@string/title_activity_light"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+        <activity
+            android:name=".GPS"
+            android:label="@string/title_activity_gps"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+        <activity
+            android:name=".Network"
+            android:label="@string/title_activity_network"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+        <activity
+            android:name=".Humidity"
+            android:label="@string/title_activity_humidity"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+        <activity
+            android:name=".Pressure"
+            android:label="@string/title_activity_pressure"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+        <activity
+            android:name=".Proximity"
+            android:label="@string/title_activity_proximity"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+        <activity
+            android:name=".Compass"
+            android:label="@string/title_activity_compass"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+        <activity
+            android:name=".MagneticField"
+            android:label="@string/title_activity_magnetic_field"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
     </application>

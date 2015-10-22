@@ -6,19 +6,14 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.widget.TextView;
-import java.lang.Math;
 
 public class Gravity extends AppCompatActivity implements SensorEventListener {
 
     private SensorManager senSensorManager;
     private Sensor senGyroscope;
-    static final double EPSILON = 0.10;
 
     TextView textViewName;
     TextView textViewX;
@@ -34,8 +29,11 @@ public class Gravity extends AppCompatActivity implements SensorEventListener {
     protected void registerSensor(){
         senSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         senGyroscope = senSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-        senSensorManager.registerListener(this, senGyroscope , SensorManager.SENSOR_DELAY_NORMAL);
-
+        if(senGyroscope==null){
+            textViewName.setText("Gyroscope unavailable");
+        }else {
+            senSensorManager.registerListener(this, senGyroscope, SensorManager.SENSOR_DELAY_NORMAL);
+        }
     }
 
     public void loadToolbar(){
@@ -80,7 +78,6 @@ public class Gravity extends AppCompatActivity implements SensorEventListener {
         if (mySensor.getType() == Sensor.TYPE_ACCELEROMETER) {
             final float alpha = (float)0.8;
             float gravity[] = new float[3];
-            float linear_acceleration[] = new float[3];
 
             gravity[0] = alpha * gravity[0] + (1 - alpha) * event.values[0];
             gravity[1] = alpha * gravity[1] + (1 - alpha) * event.values[1];

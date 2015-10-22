@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" android:fitsSystemWindows="true"
-    tools:context="es.pabgarci.multisensortool.Light"
+    tools:context="es.pabgarci.multisensortool.Humidity"
     android:background="#000000">
 
     <android.support.design.widget.AppBarLayout android:layout_height="wrap_content"
@@ -16,6 +16,6 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_light" />
+    <include layout="@layout/content_humidity" />
 
 </android.support.design.widget.CoordinatorLayout>
