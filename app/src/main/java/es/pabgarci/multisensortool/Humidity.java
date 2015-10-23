@@ -50,7 +50,6 @@ public class Humidity extends AppCompatActivity implements SensorEventListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_humidity);
         loadToolbar();
-        registerSensor();
         textViewValue = (TextView)findViewById(R.id.textView_humidity_value);
         textViewPower = (TextView)findViewById(R.id.textView_humidity_power);
         textViewMaxRange = (TextView)findViewById(R.id.textView_humidity_max_range);
@@ -59,6 +58,7 @@ public class Humidity extends AppCompatActivity implements SensorEventListener {
         textViewVendor = (TextView)findViewById(R.id.textView_humidity_vendor);
         textViewVersion = (TextView)findViewById(R.id.textView_humidity_version);
         textViewName = (TextView)findViewById(R.id.textView_humidity_name);
+        registerSensor();
     }
 
     @Override

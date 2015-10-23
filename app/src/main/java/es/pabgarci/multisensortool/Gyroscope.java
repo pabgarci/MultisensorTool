@@ -57,7 +57,7 @@ public class Gyroscope extends FilterActivity {
 	{
 		super.onCreate(savedInstanceState);
 
-		setContentView(R.layout.layout_gauge);
+		setContentView(R.layout.activity_gyroscope);
 		loadToolbar();
 		textViewXAxis = (TextView) findViewById(R.id.value_x_axis);
 		textViewYAxis = (TextView) findViewById(R.id.value_y_axis);
@@ -88,15 +88,25 @@ public class Gyroscope extends FilterActivity {
 		return true;
 	}
 
-	/**
-	 * Event Handling for Individual menu item selected Identify single menu
-	 * item by it's id
-	 * */
+	private void showAboutDialog()
+	{
+		Dialog helpDialog = new Dialog(this);
+
+		helpDialog.setCancelable(true);
+		helpDialog.setCanceledOnTouchOutside(true);
+		helpDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+		View view = getLayoutInflater().inflate(R.layout.about, null);
+
+		helpDialog.setContentView(view);
+
+		helpDialog.show();
+	}
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item)
 	{
-		switch (item.getItemId())
-		{
+		switch (item.getItemId()){
 		// Log the data
 		case R.id.action_settings_sensor:
 			Intent intent = new Intent(this, FilterConfigActivity.class);
@@ -107,6 +117,10 @@ public class Gyroscope extends FilterActivity {
 		case R.id.menu_settings_help:
 			showHelpDialog();
 			return true;
+
+			case R.id.menu_settings_about:
+				showAboutDialog();
+				return true;
 
 		default:
 			return super.onOptionsItemSelected(item);
@@ -121,7 +135,7 @@ public class Gyroscope extends FilterActivity {
 		helpDialog.setCanceledOnTouchOutside(true);
 		helpDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
 
-		View view = getLayoutInflater().inflate(R.layout.layout_help_gauges,null);
+		View view = getLayoutInflater().inflate(R.layout.help_gyroscope,null);
 
 		helpDialog.setContentView(view);
 

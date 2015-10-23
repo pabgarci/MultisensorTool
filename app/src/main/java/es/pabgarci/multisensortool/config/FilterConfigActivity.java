@@ -4,13 +4,11 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.os.Bundle;
-import android.preference.CheckBoxPreference;
 import android.preference.EditTextPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceActivity;
 import android.preference.SwitchPreference;
-import android.util.Log;
 import android.widget.Toast;
 
 import es.pabgarci.multisensortool.R;
@@ -85,7 +83,7 @@ public class FilterConfigActivity extends PreferenceActivity implements
 	{
 		super.onCreate(savedInstanceState);
 
-		addPreferencesFromResource(R.xml.preference_filter);
+		addPreferencesFromResource(R.xml.preference_filter_simple);
 
 		spLpfLinearAccel = (SwitchPreference) findPreference(LPF_LINEAR_ACCEL_ENABLED_KEY);
 

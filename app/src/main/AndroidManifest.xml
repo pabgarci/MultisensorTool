@@ -99,17 +99,18 @@
         <activity
             android:name=".Gyroscope"
             android:label="@string/title_activity_gyroscope"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
         <activity
             android:name=".config.FilterConfigActivity"
             android:label="@string/title_activity_gyroscope"
-            android:theme="@style/AppTheme.NoActionBar" >
+            android:theme="@style/PrefsTheme" >
         </activity>
         <activity
             android:name=".config.NoiseConfigActivity"
             android:label="@string/title_activity_gyroscope"
-            android:theme="@style/AppTheme.NoActionBar" >
+            android:theme="@style/PrefsTheme" >
         </activity>
 
     </application>

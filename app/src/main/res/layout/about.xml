@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:background="#000000">
 
     <ScrollView
         android:id="@+id/ScrollView01"
@@ -39,7 +40,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_toRightOf="@+id/label_sensor_name"
-                        android:text="@string/action_help"
+                        android:text="@string/action_about"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textColor="#fff"
                         android:textStyle="bold" />
@@ -51,7 +52,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:text="What does the noise do?"
+                android:text=""
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="#fff"
                 android:textStyle="bold" />
@@ -61,7 +62,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:text="The noise plots the root-mean-squared (standard deviation) of the raw acceleration, the acceleration after being passed through a mean filter and the acceleration after being passed through a low-pass filter, respectively. This allows the user to quickly compare the effectiveness of the mean and low-pass filters."
+                android:text=""
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="#fff" />
 
@@ -70,7 +71,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:text="What smoothing filters are available?"
+                android:text=""
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="#fff"
                 android:textStyle="bold" />
@@ -80,16 +81,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:text="There are two smoothing filters available. The first filter is a mean (averaging) filter that can be defined in terms of a time constant (the length of sensor data in terms of seconds). The second filter is a low-pass filter that can be defined in terms of a time constant (the length of sensor data in terms of seconds). A single filter, both filters or no filters can be used at any time. In general, the larger the time constant, the smoother the data will be. The side-effect is that the larger the time constant, the more lagged the data becomes."
+                android:text=""
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="#fff" />
-            
-                <TextView
+
+            <TextView
                 android:id="@+id/text_header_introduction_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:text="How can I use the sensor filters?"
+                android:text=""
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="#fff"
                 android:textStyle="bold" />
@@ -99,7 +100,26 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:text="The sensor filters can be enabled and configured from the menu by tapping the Sensor menu-item."
+                android:text=""
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="#fff" />
+
+            <TextView
+                android:id="@+id/text_header_introduction_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Many, many thanks to:"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="#fff"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/text_introduction_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Kircher Electronics\n\n http://kircherelectronics.com"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="#fff" />
         </LinearLayout>

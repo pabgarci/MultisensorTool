@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#000000">
+
+    <PreferenceCategory android:title="Orientation" >
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dialogTitle="Invert Axis"
+            android:key="axis_inversion_enabled_preference"
+            android:summaryOff="Inversion is Off"
+            android:summaryOn="Inversion is On"
+            android:title="Invert Axis" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="Frequency" >
+        <ListPreference
+            android:title="Sensor Frequency"
+            android:key="sensor_frequency_preference"
+            android:defaultValue="2"
+            android:entries="@array/frequency"
+            android:entryValues="@array/frequencyValues" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

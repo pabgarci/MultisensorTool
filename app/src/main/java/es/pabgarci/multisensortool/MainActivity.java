@@ -1,5 +1,6 @@
 package es.pabgarci.multisensortool;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -72,10 +74,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                switch(web[position]){
+                switch (web[position]) {
                     case "Accelerometer":
-                    Intent intent = new Intent(getApplicationContext(), Accelerometer.class);
-                    startActivity(intent);
+                        Intent intent = new Intent(getApplicationContext(), Accelerometer.class);
+                        startActivity(intent);
                         break;
                     case "Compass":
                         Intent intent15 = new Intent(getApplicationContext(), Compass.class);
@@ -144,6 +146,21 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void showAboutDialog()
+    {
+        Dialog helpDialog = new Dialog(this);
+
+        helpDialog.setCancelable(true);
+        helpDialog.setCanceledOnTouchOutside(true);
+        helpDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+        View view = getLayoutInflater().inflate(R.layout.about, null);
+
+        helpDialog.setContentView(view);
+
+        helpDialog.show();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -171,6 +188,8 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.action_settings) {
 
             return true;
+        }else if(id == R.id.menu_settings_about){
+            showAboutDialog();
         }
 
         return super.onOptionsItemSelected(item);

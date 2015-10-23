@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#000000">
 
     <PreferenceCategory android:title="LPF Smoothing" >
         <EditTextPreference
@@ -8,7 +9,8 @@
             android:dialogTitle="Time Constant"
             android:inputType="numberDecimal"
             android:key="noise_lpf_smoothing_time_constant_preference"
-            android:title="Set LPF Time Constant" />
+            android:title="Set LPF Time Constant"
+            android:background="#000000"/>
     </PreferenceCategory>
     <PreferenceCategory android:title="Mean Filter Smoothing" >
         <EditTextPreference
