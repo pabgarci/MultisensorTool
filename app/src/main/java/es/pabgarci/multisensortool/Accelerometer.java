@@ -12,7 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
-public class Accelerometer extends AppCompatActivity implements SensorEventListener {
+public class Accelerometer extends FilterActivity implements SensorEventListener {
     private SensorManager senSensorManager;
     private Sensor senAccelerometer;
     private float lastX, lastY, lastZ;
@@ -50,7 +50,7 @@ public class Accelerometer extends AppCompatActivity implements SensorEventListe
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_accelerometer);
         loadToolbar();
@@ -80,6 +80,10 @@ public class Accelerometer extends AppCompatActivity implements SensorEventListe
         textViewName.setText(String.format("Model: %s", mySensor.getName()));
 
         if (mySensor.getType() == Sensor.TYPE_ACCELEROMETER) {
+
+            System.arraycopy(event.values, 0, acceleration, 0,
+                    event.values.length);
+
             deltaX = Math.abs(lastX - event.values[0]);
             deltaY = Math.abs(lastY - event.values[1]);
             deltaZ = Math.abs(lastZ - event.values[2]);
@@ -97,10 +101,9 @@ public class Accelerometer extends AppCompatActivity implements SensorEventListe
 
         }
 
-
-        textViewX.setText(String.format("X-Axis = %s  m/s^2", Float.toString(deltaX)));
-        textViewY.setText(String.format("Y-Axis = %s  m/s^2", Float.toString(deltaY)));
-        textViewZ.setText(String.format("Z-Axis = %s  m/s^2", Float.toString(deltaZ)));
+        textViewX.setText(String.format("X-Axis: %.2f", acceleration[0]));
+        textViewY.setText(String.format("Y-Axis: %.2f", acceleration[1]));
+        textViewZ.setText(String.format("Z-Axis: %.2f", acceleration[2]));
 
         if (deltaX > deltaY) {
             imageViewArrow.setImageResource(R.drawable.arrow_h);
@@ -111,15 +114,12 @@ public class Accelerometer extends AppCompatActivity implements SensorEventListe
         }
 
 
-
-
-
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
     }
 
-    protected void onPause() {
+    public void onPause() {
         super.onPause();
         senSensorManager.unregisterListener(this);
     }
@@ -129,7 +129,7 @@ public class Accelerometer extends AppCompatActivity implements SensorEventListe
         senSensorManager.unregisterListener(this);
     }
 
-    protected void onResume() {
+    public void onResume() {
         super.onResume();
         senSensorManager.registerListener(this, senAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
     }
