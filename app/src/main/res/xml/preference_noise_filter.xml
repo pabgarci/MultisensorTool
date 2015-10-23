@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory android:title="LPF Smoothing" >
+        <EditTextPreference
+            android:defaultValue="@string/default_value_low_pass_filter"
+            android:dialogMessage="Set LPF Time Constant (Seconds)"
+            android:dialogTitle="Time Constant"
+            android:inputType="numberDecimal"
+            android:key="noise_lpf_smoothing_time_constant_preference"
+            android:title="Set LPF Time Constant" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="Mean Filter Smoothing" >
+        <EditTextPreference
+            android:defaultValue="@string/default_value_mean_filter"
+            android:dialogMessage="Set Mean Filter Time Constant (Seconds)"
+            android:dialogTitle="Time Constant"
+            android:inputType="numberDecimal"
+            android:key="noise_mean_filter_smoothing_time_constant_preference"
+            android:title="Set Mean Filter Time Constant" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="Median Filter Smoothing" >
+        <EditTextPreference
+            android:defaultValue="@string/default_value_mean_filter"
+            android:dialogMessage="Set Median Filter Time Constant (Seconds)"
+            android:dialogTitle="Time Constant"
+            android:inputType="numberDecimal"
+            android:key="noise_median_filter_smoothing_time_constant_preference"
+            android:title="Set Median Filter Time Constant" />
+    </PreferenceCategory>
+
+</PreferenceScreen>
