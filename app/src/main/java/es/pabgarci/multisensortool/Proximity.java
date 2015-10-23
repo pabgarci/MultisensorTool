@@ -15,6 +15,14 @@ public class Proximity extends AppCompatActivity implements SensorEventListener 
     private Sensor senProximity;
 
     TextView textViewValue;
+    TextView textViewPower;
+    TextView textViewMaxRange;
+    TextView textViewMinDelay;
+    TextView textViewResolution;
+    TextView textViewVendor;
+    TextView textViewVersion;
+    TextView textViewName;
+
 
     protected void registerSensor(){
         senSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
@@ -40,6 +48,13 @@ public class Proximity extends AppCompatActivity implements SensorEventListener 
         setContentView(R.layout.activity_proximity);
         loadToolbar();
         textViewValue = (TextView)findViewById(R.id.textView_proximity_value);
+        textViewPower = (TextView)findViewById(R.id.textView_proximity_power);
+        textViewMaxRange = (TextView)findViewById(R.id.textView_proximity_max_range);
+        textViewMinDelay = (TextView)findViewById(R.id.textView_proximity_min_delay);
+        textViewResolution = (TextView)findViewById(R.id.textView_proximity_resolution);
+        textViewVendor = (TextView)findViewById(R.id.textView_proximity_vendor);
+        textViewVersion = (TextView)findViewById(R.id.textView_proximity_version);
+        textViewName = (TextView)findViewById(R.id.textView_proximity_name);
         registerSensor();
     }
 
@@ -49,6 +64,15 @@ public class Proximity extends AppCompatActivity implements SensorEventListener 
 
         if (mySensor.getType() == Sensor.TYPE_PROXIMITY) {
             float value=event.values[0];
+
+            textViewPower.setText(String.format("Power: %s", mySensor.getPower()));
+            textViewMaxRange.setText(String.format("Max range: %s", mySensor.getMaximumRange()));
+            textViewMinDelay.setText(String.format("Min delay: %s", mySensor.getMinDelay()));
+            textViewResolution.setText(String.format("Resolution: %s", mySensor.getResolution()));
+            textViewVendor.setText(String.format("Vendor: %s", mySensor.getVendor()));
+            textViewVersion.setText(String.format("Version: %s", mySensor.getVersion()));
+            textViewName.setText(String.format("Model: %s", mySensor.getName()));
+            
             if(mySensor.getMaximumRange()==value) {
                 textViewValue.setText("'Far' state");
             }else if(value<mySensor.getMaximumRange()){

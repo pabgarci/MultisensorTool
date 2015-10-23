@@ -12,4 +12,65 @@
     <string name="title_activity_proximity">Proximity</string>
     <string name="title_activity_compass">Compass</string>
     <string name="title_activity_magnetic_field">MagneticField</string>
+    <string name="title_activity_linear_acceleration">LinearAcceleration</string>
+    <string name="title_activity_gyroscope">Gyroscope</string>
+    <string name="sensor_label">Sensor</string>
+    <string name="sensor_calibrated_name">GyroscopeCalibrated</string>
+    <string name="sensor_uncalibrated_name">GyroscopeUncalibrated</string>
+    <string name="sensor_active">Active</string>
+    <string name="sensor_unavailable">Unavailable</string>
+    <string name="action_config">Settings</string>
+    <string name="action_reset">Reset</string>
+    <string name="label_x_axis">X-Axis:</string>
+    <string name="label_y_axis">Y-Axis:</string>
+    <string name="label_z_axis">Z-Axis:</string>
+    <string name="value_default">0.0</string>
+    <string name="value_default_mean_filter">0.5</string>
+    <string name="value_default_complimentary_filter">0.5</string>
+    <string name="developer_url">KircherElectronics.com</string>
+    <string name="confirm_label">I got this.</string>
+    <string name="action_options">Options</string>
+    <string name="action_help">Help</string>
+    <string name="action_start_log">Start</string>
+    <string name="action_stop_log">Stop</string>
+    <string name="title_activity_orientation">Orientation</string>
+    <string name="title_activity_storage">Storage</string>
+    <string name="title_activity_wi_fi">WiFi</string>
+    <string name="title_activity_temperature">Temperature</string>
+	<string name="explorer_name">Explorer</string>
+    <string name="accelerometer_name">Accelerometer</string>
+    <string name="acceleration_name">Acceleration</string>
+    <string name="start_name">Check Sensor</string>
+    <string name="app_version">v3.0</string>
+    <string name="action_diagnostics">Diagnostic</string>
+    <string name="action_log">Log</string>
+    <string name="action_filter">Help</string>
+    <string name="sensor_name">Sensor</string>
+    <string name="frequency_label">Frequency:</string>
+    <string name="default_value">0.000</string>
+    <string name="default_value_mean_filter">1.0</string>
+    <string name="default_value_low_pass_filter">0.5</string>
+    <string name="x_axis_label">X-Axis</string>
+    <string name="max_label">Max:</string>
+    <string name="max_amp_label">Max Amp:</string>
+    <string name="min_label">Min:</string>
+    <string name="var_label">Var:</string>
+    <string name="mean_label">Mean:</string>
+    <string name="axis_label">Axis</string>
+    <string name="positive_label">Positive</string>
+    <string name="negative_label">Negative</string>
+    <string name="noise_label">Noise</string>
+    <string name="rms_label">RMS:</string>
+    <string name="plot_label">Plot</string>
+    <string name="vector_label">Vector</string>
+    <string name="done_label">Done</string>
+    <string name="label_mean_filter">Mean Filter</string>
+    <string name="label_filter_active">Filter Active</string>
+    <string name="label_time_constant">Time Constant</string>
+
+    <string-array name="frequency_array">
+        <item>Slow</item>
+        <item>Medium</item>
+        <item>Fast</item>
+    </string-array>
 </resources>

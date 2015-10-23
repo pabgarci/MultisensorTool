@@ -9,12 +9,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
         ListView list;
 
         String[] web = {
                 "Accelerometer",
+                "Compass",
                 "Gravity",
                 "GPS",
                 "Gyroscope",
@@ -32,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         } ;
         Integer[] imageId = {
                 R.drawable.ic_car_white_48dp, //Accelerometer
-                R.drawable.compass_invert, //Gravity
+                R.drawable.compass_invert, //Compass
                 R.drawable.ic_weight_white_48dp, //Gravity
                 R.drawable.ic_gps_fixed_white_48dp, //GPS
                 R.drawable.gyroscope, //Gyroscope
@@ -88,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intent2);
                         break;
                     case "Gyroscope":
-                        Intent intent3 = new Intent(getApplicationContext(), Accelerometer.class);
+                        Intent intent3 = new Intent(getApplicationContext(), Gyroscope.class);
                         startActivity(intent3);
                         break;
                     case "Humidity":
@@ -104,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intent6);
                         break;
                     case "Magnetic Field":
-                        Intent intent7 = new Intent(getApplicationContext(), Accelerometer.class);
+                        Intent intent7 = new Intent(getApplicationContext(), MagneticField.class);
                         startActivity(intent7);
                         break;
                     case "Network":
@@ -112,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intent8);
                         break;
                     case "Orientation":
-                        Intent intent9 = new Intent(getApplicationContext(), Accelerometer.class);
+                        Intent intent9 = new Intent(getApplicationContext(), Orientation.class);
                         startActivity(intent9);
                         break;
                     case "Pressure":
@@ -124,15 +126,15 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intent11);
                         break;
                     case "Storage":
-                        Intent intent12 = new Intent(getApplicationContext(), Accelerometer.class);
+                        Intent intent12 = new Intent(getApplicationContext(), Storage.class);
                         startActivity(intent12);
                         break;
                     case "Temperature":
-                        Intent intent13 = new Intent(getApplicationContext(), Accelerometer.class);
+                        Intent intent13 = new Intent(getApplicationContext(), Temperature.class);
                         startActivity(intent13);
                         break;
                     case "WiFi":
-                        Intent intent14 = new Intent(getApplicationContext(), Accelerometer.class);
+                        Intent intent14 = new Intent(getApplicationContext(), WiFi.class);
                         startActivity(intent14);
                         break;
                 }

@@ -6,14 +6,18 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.TextView;
 
-public class Gravity extends AppCompatActivity implements SensorEventListener {
+public class LinearAcceleration extends AppCompatActivity implements SensorEventListener {
+
 
     private SensorManager senSensorManager;
-    private Sensor senGyroscope;
+    private Sensor senAccelerometer;
 
     TextView textViewName;
     TextView textViewX;
@@ -22,11 +26,11 @@ public class Gravity extends AppCompatActivity implements SensorEventListener {
 
     protected void registerSensor(){
         senSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-        senGyroscope = senSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-        if(senGyroscope==null){
-            textViewName.setText("Gyroscope unavailable");
+        senAccelerometer = senSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        if(senAccelerometer==null){
+            textViewName.setText("Accelerometer unavailable");
         }else {
-            senSensorManager.registerListener(this, senGyroscope, SensorManager.SENSOR_DELAY_NORMAL);
+            senSensorManager.registerListener(this, senAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
         }
     }
 
@@ -40,14 +44,13 @@ public class Gravity extends AppCompatActivity implements SensorEventListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_gravity);
+        setContentView(R.layout.activity_linear_acceleration);
         loadToolbar();
         registerSensor();
-        textViewX = (TextView)findViewById(R.id.textView_gravity_x);
-        textViewY = (TextView)findViewById(R.id.textView_gravity_y);
-        textViewZ = (TextView)findViewById(R.id.textView_gravity_z);
-
-        if(senGyroscope==null){
+        textViewX = (TextView)findViewById(R.id.textView_linear_x);
+        textViewY = (TextView)findViewById(R.id.textView_linear_y);
+        textViewZ = (TextView)findViewById(R.id.textView_linear_z);
+        if(senAccelerometer==null){
             textViewName.setText("Accelerometer unavailable");
         }
     }
@@ -59,14 +62,19 @@ public class Gravity extends AppCompatActivity implements SensorEventListener {
         if (mySensor.getType() == Sensor.TYPE_ACCELEROMETER) {
             final float alpha = (float)0.8;
             float gravity[] = new float[3];
+            float linear_acceleration[] = new float[3];
 
             gravity[0] = alpha * gravity[0] + (1 - alpha) * event.values[0];
             gravity[1] = alpha * gravity[1] + (1 - alpha) * event.values[1];
             gravity[2] = alpha * gravity[2] + (1 - alpha) * event.values[2];
 
-            textViewX.setText(String.format("X-Axis = %s  m/s^2", Float.toString(gravity[0])));
-            textViewY.setText(String.format("Y-Axis = %s  m/s^2", Float.toString(gravity[1])));
-            textViewZ.setText(String.format("Z-Axis = %s  m/s^2", Float.toString(gravity[2])));
+            linear_acceleration[0] = event.values[0] - gravity[0];
+            linear_acceleration[1] = event.values[1] - gravity[1];
+            linear_acceleration[2] = event.values[2] - gravity[2];
+
+            textViewX.setText(String.format("X-Axis = %s  m/s^2", Float.toString(linear_acceleration[0])));
+            textViewY.setText(String.format("Y-Axis = %s  m/s^2", Float.toString(linear_acceleration[1])));
+            textViewZ.setText(String.format("Z-Axis = %s  m/s^2", Float.toString(linear_acceleration[2])));
         }
 
     }
@@ -88,7 +96,7 @@ public class Gravity extends AppCompatActivity implements SensorEventListener {
 
     protected void onResume() {
         super.onResume();
-        senSensorManager.registerListener(this, senGyroscope, SensorManager.SENSOR_DELAY_NORMAL);
+        senSensorManager.registerListener(this, senAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
     }
 
 

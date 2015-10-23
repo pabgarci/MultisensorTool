@@ -8,12 +8,19 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.hardware.SensorEventListener;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 
 public class Accelerometer extends AppCompatActivity implements SensorEventListener {
     private SensorManager senSensorManager;
     private Sensor senAccelerometer;
+    private float lastX, lastY, lastZ;
+    private final float NOISE = 2;
+
+    private float deltaX = 0;
+    private float deltaY = 0;
+    private float deltaZ = 0;
 
     TextView textViewName;
     TextView textViewX;
@@ -25,6 +32,8 @@ public class Accelerometer extends AppCompatActivity implements SensorEventListe
     TextView textViewResolution;
     TextView textViewVendor;
     TextView textViewVersion;
+
+    ImageView imageViewArrow;
 
     protected void registerSensor(){
         senSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
@@ -56,6 +65,7 @@ public class Accelerometer extends AppCompatActivity implements SensorEventListe
         textViewX = (TextView)findViewById(R.id.textView_accelerometer_x);
         textViewY = (TextView)findViewById(R.id.textView_accelerometer_y);
         textViewZ = (TextView)findViewById(R.id.textView_accelerometer_z);
+        imageViewArrow = (ImageView) findViewById(R.id.imageViewArrow);
     }
 
     @Override
@@ -70,26 +80,39 @@ public class Accelerometer extends AppCompatActivity implements SensorEventListe
         textViewName.setText(String.format("Model: %s", mySensor.getName()));
 
         if (mySensor.getType() == Sensor.TYPE_ACCELEROMETER) {
-            final float alpha = (float)0.8;
-            float gravity[] = new float[3];
-            float linear_acceleration[] = new float[3];
+            deltaX = Math.abs(lastX - event.values[0]);
+            deltaY = Math.abs(lastY - event.values[1]);
+            deltaZ = Math.abs(lastZ - event.values[2]);
 
-            gravity[0] = alpha * gravity[0] + (1 - alpha) * event.values[0];
-            gravity[1] = alpha * gravity[1] + (1 - alpha) * event.values[1];
-            gravity[2] = alpha * gravity[2] + (1 - alpha) * event.values[2];
+            if (deltaX < NOISE)
+            deltaX = 0;
+            if (deltaY < NOISE)
+            deltaY = 0;
+            if (deltaZ < NOISE)
+                deltaZ = 0;
 
-            linear_acceleration[0] = event.values[0] - gravity[0];
-            linear_acceleration[1] = event.values[1] - gravity[1];
-            linear_acceleration[2] = event.values[2] - gravity[2];
+            lastX = event.values[0];
+            lastY = event.values[1];
+            lastZ = event.values[2];
 
-            textViewX.setText(String.format("X-Axis = %s  m/s^2", Float.toString(linear_acceleration[0])));
-            textViewY.setText(String.format("Y-Axis = %s  m/s^2", Float.toString(linear_acceleration[1])));
-            textViewZ.setText(String.format("Z-Axis = %s  m/s^2", Float.toString(linear_acceleration[2])));
+        }
+
+
+        textViewX.setText(String.format("X-Axis = %s  m/s^2", Float.toString(deltaX)));
+        textViewY.setText(String.format("Y-Axis = %s  m/s^2", Float.toString(deltaY)));
+        textViewZ.setText(String.format("Z-Axis = %s  m/s^2", Float.toString(deltaZ)));
+
+        if (deltaX > deltaY) {
+            imageViewArrow.setImageResource(R.drawable.arrow_h);
+        } else if (deltaY > deltaX) {
+            imageViewArrow.setImageResource(R.drawable.arrow_v);
+        }
+
         }
 
 
 
-    }
+
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {

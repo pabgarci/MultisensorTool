@@ -71,6 +71,47 @@
             android:label="@string/title_activity_magnetic_field"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
+        <activity
+            android:name=".LinearAcceleration"
+            android:label="@string/title_activity_linear_acceleration"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+        <activity
+            android:name=".Orientation"
+            android:label="@string/title_activity_orientation"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+        <activity
+            android:name=".Storage"
+            android:label="@string/title_activity_storage"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+        <activity
+            android:name=".WiFi"
+            android:label="@string/title_activity_wi_fi"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+        <activity
+            android:name=".Temperature"
+            android:label="@string/title_activity_temperature"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+        <activity
+            android:name=".Gyroscope"
+            android:label="@string/title_activity_gyroscope"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+        <activity
+            android:name=".config.FilterConfigActivity"
+            android:label="@string/title_activity_gyroscope"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+        <activity
+            android:name=".config.NoiseConfigActivity"
+            android:label="@string/title_activity_gyroscope"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+
     </application>
 
 </manifest>

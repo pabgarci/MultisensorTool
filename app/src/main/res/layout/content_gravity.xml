@@ -20,54 +20,55 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:id="@+id/textView_gyroscope_name" />
+            android:id="@+id/textView_gravity_name" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:id="@+id/textView_gyroscope_vendor" />
+            android:id="@+id/textView_gravity_vendor" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:id="@+id/textView_gyroscope_version" />
+            android:id="@+id/textView_gravity_version" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:id="@+id/textView_gyroscope_power" />
+            android:id="@+id/textView_gravity_power" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:id="@+id/textView_gyroscope_resolution" />
+            android:id="@+id/textView_gravity_resolution" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:id="@+id/textView_gyroscope_max_range" />
+            android:id="@+id/textView_gravity_max_range" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:id="@+id/textView_gyroscope_min_delay"
+            android:id="@+id/textView_gravity_min_delay"
             android:paddingBottom="20dp"/>
+
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:id="@+id/textView_gyroscope_x" />
+            android:id="@+id/textView_gravity_x" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:id="@+id/textView_gyroscope_y"/>
+            android:id="@+id/textView_gravity_y"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:id="@+id/textView_gyroscope_z"/>
+            android:id="@+id/textView_gravity_z"/>
 
 
 
