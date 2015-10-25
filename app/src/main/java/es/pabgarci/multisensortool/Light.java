@@ -1,19 +1,15 @@
 package es.pabgarci.multisensortool;
 
-import android.content.Context;
+
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.widget.TextView;
 
-public class Light extends AppCompatActivity  implements SensorEventListener {
+public class Light extends Common  implements SensorEventListener {
     private SensorManager senSensorManager;
     private Sensor senLight;
 
@@ -38,19 +34,11 @@ public class Light extends AppCompatActivity  implements SensorEventListener {
 
     }
 
-    public void loadToolbar(){
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        assert getSupportActionBar() != null;
-        getSupportActionBar().setIcon(R.mipmap.ic_launcher);
-    }
-
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_light);
         loadToolbar();
-        registerSensor();
         textViewValue = (TextView)findViewById(R.id.textView_light_value);
         textViewPower = (TextView)findViewById(R.id.textView_light_power);
         textViewMaxRange = (TextView)findViewById(R.id.textView_light_max_range);
@@ -59,6 +47,7 @@ public class Light extends AppCompatActivity  implements SensorEventListener {
         textViewVendor = (TextView)findViewById(R.id.textView_light_vendor);
         textViewVersion = (TextView)findViewById(R.id.textView_light_version);
         textViewName = (TextView)findViewById(R.id.textView_light_name);
+        registerSensor();
     }
 
     @Override
@@ -82,7 +71,7 @@ public class Light extends AppCompatActivity  implements SensorEventListener {
 
     }
 
-    protected void onPause() {
+    public void onPause() {
         super.onPause();
         senSensorManager.unregisterListener(this);
     }
@@ -92,7 +81,7 @@ public class Light extends AppCompatActivity  implements SensorEventListener {
         senSensorManager.unregisterListener(this);
     }
 
-    protected void onResume() {
+    public void onResume() {
         super.onResume();
         senSensorManager.registerListener(this, senLight, SensorManager.SENSOR_DELAY_NORMAL);
     }

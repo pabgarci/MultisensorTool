@@ -6,14 +6,10 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.widget.TextView;
 
-public class Humidity extends AppCompatActivity implements SensorEventListener {
+public class Humidity extends Common implements SensorEventListener {
 
     private SensorManager senSensorManager;
     private Sensor senHumidity;
@@ -38,15 +34,9 @@ public class Humidity extends AppCompatActivity implements SensorEventListener {
 
     }
 
-    public void loadToolbar(){
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        assert getSupportActionBar() != null;
-        getSupportActionBar().setIcon(R.mipmap.ic_launcher);
-    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_humidity);
         loadToolbar();
@@ -81,7 +71,7 @@ public class Humidity extends AppCompatActivity implements SensorEventListener {
 
     }
 
-    protected void onPause() {
+    public void onPause() {
         super.onPause();
         senSensorManager.unregisterListener(this);
     }
@@ -91,7 +81,7 @@ public class Humidity extends AppCompatActivity implements SensorEventListener {
         senSensorManager.unregisterListener(this);
     }
 
-    protected void onResume() {
+    public void onResume() {
         super.onResume();
         senSensorManager.registerListener(this, senHumidity, SensorManager.SENSOR_DELAY_NORMAL);
     }

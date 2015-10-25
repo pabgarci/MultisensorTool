@@ -39,7 +39,7 @@
                         android:id="@+id/label_app_description"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_toRightOf="@+id/label_sensor_name"
+                        android:layout_toEndOf="@+id/label_sensor_name"
                         android:text="@string/action_help"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textColor="#fff"
@@ -52,8 +52,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:text="What is Acceleration Explorer?"
-                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="What is Multisensor Tool?"
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="#fff"
                 android:textStyle="bold" />
 
@@ -62,7 +62,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:text="Acceleration Explorer allows user to experiment with the devices acceleration sensor. It is intended to allow teachers, students and hobbyists to quickly visualize how the acceleromter performs, with and without a variety of filters. Acceleration Explorer is not intended for an average user. It will not calibrate your acceleration sensor. It will not give your phone an acceleration sensor. It will not perform magic. You can view the sensor output in real-time as a plot, as a tilt angle or as a vector. You can apply smoothing filters or linear acceleration filters. You can log sensor and filter output to an external .CSV file. You can even perform a sensor diagnostic to determine the noise, offset, skew and frequency."
+                android:text="Multisensor Tool is an application to see the whole information about the sensors in your phone."
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="#fff" />
 
@@ -71,7 +71,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:text="Available Smoothing Filters"
+                android:text="Accelerometer"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="#fff"
                 android:textStyle="bold" />
@@ -81,7 +81,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:text="There are currently three smoothing filters. A low-pass filter, a mean filter and a median filter."
+                android:text="Include Logger and Vector's view."
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="#fff" />
 
@@ -90,7 +90,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:text="Available Linear Acceleration Filters"
+                android:text="Compass"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="#fff"
                 android:textStyle="bold" />
@@ -100,7 +100,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:text="There are currently six linear acceleration filters. The Android implementation of linear acceleration is supported if it is supported by the device. A low-pass filter implementation of linear acceleration will work on all devices. If the device is equiped with a gyroscope, there are four sensor fusion based linear acceleration filters. Three are complimentary filters using the orientation, rotation matrices and quaternions, respectivly. The fourth is a Kalman filter based on quaternions."
+                android:text="You can use a real compass developed using electromagnetic field and accelerometer sensor."
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="#fff" />
 
@@ -109,10 +109,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:text="Logger View"
+                android:text="GPS"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="#fff"
                 android:textStyle="bold" />
+
+            ////////////
 
             <TextView
                 android:id="@+id/text_introduction_1"

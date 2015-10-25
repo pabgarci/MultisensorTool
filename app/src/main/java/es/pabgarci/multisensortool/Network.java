@@ -2,22 +2,13 @@ package es.pabgarci.multisensortool;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.telephony.*;
 import android.widget.ListView;
 
-public class Network extends AppCompatActivity {
+public class Network extends Common {
 
     TelephonyManager tm;
     String[] auxArray;
-
-    public void loadToolbar(){
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        assert getSupportActionBar() != null;
-        getSupportActionBar().setIcon(R.mipmap.ic_launcher);
-    }
 
     public String getPhoneType(){
         String aux="Phone type: ";
@@ -159,7 +150,7 @@ public class Network extends AppCompatActivity {
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_network);
         loadToolbar();

@@ -1,22 +1,25 @@
 package es.pabgarci.multisensortool;
 
 import android.content.Context;
+import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorManager;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.hardware.SensorEventListener;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import es.pabgarci.multisensortool.config.FilterConfigActivity;
 
-public class Accelerometer extends FilterActivity implements SensorEventListener {
+
+public class Accelerometer extends Common implements SensorEventListener {
     private SensorManager senSensorManager;
     private Sensor senAccelerometer;
     private float lastX, lastY, lastZ;
-    private final float NOISE = 2;
 
     private float deltaX = 0;
     private float deltaY = 0;
@@ -40,13 +43,6 @@ public class Accelerometer extends FilterActivity implements SensorEventListener
         senAccelerometer = senSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         senSensorManager.registerListener(this, senAccelerometer , SensorManager.SENSOR_DELAY_NORMAL);
 
-    }
-
-    public void loadToolbar(){
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        assert getSupportActionBar() != null;
-        getSupportActionBar().setIcon(R.mipmap.ic_launcher);
     }
 
     @Override
@@ -88,6 +84,7 @@ public class Accelerometer extends FilterActivity implements SensorEventListener
             deltaY = Math.abs(lastY - event.values[1]);
             deltaZ = Math.abs(lastZ - event.values[2]);
 
+            float NOISE = 2;
             if (deltaX < NOISE)
             deltaX = 0;
             if (deltaY < NOISE)
@@ -132,6 +129,37 @@ public class Accelerometer extends FilterActivity implements SensorEventListener
     public void onResume() {
         super.onResume();
         senSensorManager.registerListener(this, senAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_accelerometer, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId())
+        {
+            // Log the data
+            case R.id.action_settings_sensor:
+                Intent intent = new Intent(this, FilterConfigActivity.class);
+                startActivity(intent);
+                return true;
+
+            // Log the data
+            case R.id.menu_settings_help:
+                showHelpDialog("accelerometer");
+                return true;
+
+            case R.id.menu_settings_about:
+                showAboutDialog("accelerometer");
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
 }

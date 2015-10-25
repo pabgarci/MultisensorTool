@@ -3,7 +3,6 @@ package es.pabgarci.multisensortool;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
@@ -13,29 +12,18 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+import es.pabgarci.multisensortool.config.FilterConfigActivity;
+import es.pabgarci.multisensortool.config.NoiseConfigActivity;
+
+public class MainActivity extends Common {
         ListView list;
 
-        String[] web = {
-                "Accelerometer",
-                "Compass",
-                "Gravity",
-                "GPS",
-                "Gyroscope",
-                "Humidity",
-                "Light",
-                "Linear Acceleration",
-                "Magnetic Field",
-                "Network",
-                "Orientation",
-                "Pressure",
-                "Proximity",
-                "Storage",
-                "Temperature",
-                "WiFi"
-        } ;
+        String[] web;
+
         Integer[] imageId = {
                 R.drawable.ic_car_white_48dp, //Accelerometer
+                R.drawable.ic_chart_areaspline_white_48dp, //Accelerometer Logger
+                R.drawable.vector, //Accelerometer Vector
                 R.drawable.compass_invert, //Compass
                 R.drawable.ic_weight_white_48dp, //Gravity
                 R.drawable.ic_gps_fixed_white_48dp, //GPS
@@ -54,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
         };
 
+
     public void loadToolbar(){
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -61,6 +50,10 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setIcon(R.mipmap.ic_launcher);
         getSupportActionBar().setTitle(R.string.app_name);
         getSupportActionBar().setSubtitle(R.string.app_surname);
+    }
+
+    public void notAvailableYet(){
+        Toast.makeText(getApplicationContext(), "Not available yet!", Toast.LENGTH_SHORT).show();
     }
 
 
@@ -78,6 +71,15 @@ public class MainActivity extends AppCompatActivity {
                     case "Accelerometer":
                         Intent intent = new Intent(getApplicationContext(), Accelerometer.class);
                         startActivity(intent);
+                        break;
+                    case "Accelerometer Logger":
+                        notAvailableYet();
+                        //Intent intent16 = new Intent(getApplicationContext(), AccelerometerLogger.class);
+                        //startActivity(intent16);
+                        break;
+                    case "Accelerometer Vector":
+                        Intent intent17 = new Intent(getApplicationContext(), AccelerometerVector.class);
+                        startActivity(intent17);
                         break;
                     case "Compass":
                         Intent intent15 = new Intent(getApplicationContext(), Compass.class);
@@ -104,8 +106,9 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intent5);
                         break;
                     case "Linear Acceleration":
-                        Intent intent6 = new Intent(getApplicationContext(), Accelerometer.class);
-                        startActivity(intent6);
+                        notAvailableYet();
+                        //Intent intent6 = new Intent(getApplicationContext(), LinearAcceleration.class);
+                        //startActivity(intent6);
                         break;
                     case "Magnetic Field":
                         Intent intent7 = new Intent(getApplicationContext(), MagneticField.class);
@@ -128,16 +131,18 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intent11);
                         break;
                     case "Storage":
-                        Intent intent12 = new Intent(getApplicationContext(), Storage.class);
-                        startActivity(intent12);
+                        notAvailableYet();
+                        //Intent intent12 = new Intent(getApplicationContext(), Storage.class);
+                        //startActivity(intent12);
                         break;
                     case "Temperature":
                         Intent intent13 = new Intent(getApplicationContext(), Temperature.class);
                         startActivity(intent13);
                         break;
                     case "WiFi":
-                        Intent intent14 = new Intent(getApplicationContext(), WiFi.class);
-                        startActivity(intent14);
+                        notAvailableYet();
+                        //Intent intent14 = new Intent(getApplicationContext(), WiFi.class);
+                        //startActivity(intent14);
                         break;
                 }
 
@@ -146,25 +151,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void showAboutDialog()
-    {
-        Dialog helpDialog = new Dialog(this);
-
-        helpDialog.setCancelable(true);
-        helpDialog.setCanceledOnTouchOutside(true);
-        helpDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-
-        View view = getLayoutInflater().inflate(R.layout.about, null);
-
-        helpDialog.setContentView(view);
-
-        helpDialog.show();
-    }
-
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        web = getResources().getStringArray(R.array.menu_items);
         loadToolbar();
         setList();
     }
@@ -185,11 +176,15 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-
+        if (id == R.id.action_settings_filter) {
+            Intent intent = new Intent(getApplicationContext(), FilterConfigActivity.class);
+            startActivity(intent);
             return true;
+        }else if (id == R.id.action_about) {
+                showAboutDialog("main");
+                return true;
         }else if(id == R.id.menu_settings_about){
-            showAboutDialog();
+            showAboutDialog("main");
         }
 
         return super.onOptionsItemSelected(item);

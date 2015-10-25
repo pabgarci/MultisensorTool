@@ -8,8 +8,8 @@ android {
         applicationId "es.pabgarci.multisensortool"
         minSdkVersion 19
         targetSdkVersion 23
-        versionCode 1
-        versionName "1.0"
+        versionCode 3
+        versionName "1.0.2"
     }
     buildTypes {
         release {
@@ -27,5 +27,4 @@ dependencies {
     compile 'com.google.android.gms:play-services-gcm:8.1.0'
     compile 'com.google.android.gms:play-services-location:8.1.0'
     compile 'org.apache.commons:commons-math3:3.3'
-
 }

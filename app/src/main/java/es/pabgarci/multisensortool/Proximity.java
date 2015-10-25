@@ -5,11 +5,10 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 
-public class Proximity extends AppCompatActivity implements SensorEventListener {
+public class Proximity extends Common implements SensorEventListener {
 
     private SensorManager senSensorManager;
     private Sensor senProximity;
@@ -35,15 +34,8 @@ public class Proximity extends AppCompatActivity implements SensorEventListener 
 
     }
 
-    public void loadToolbar(){
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        assert getSupportActionBar() != null;
-        getSupportActionBar().setIcon(R.mipmap.ic_launcher);
-    }
-
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_proximity);
         loadToolbar();
@@ -88,7 +80,7 @@ public class Proximity extends AppCompatActivity implements SensorEventListener 
 
     }
 
-    protected void onPause() {
+    public void onPause() {
         super.onPause();
         senSensorManager.unregisterListener(this);
     }
@@ -98,7 +90,7 @@ public class Proximity extends AppCompatActivity implements SensorEventListener 
         senSensorManager.unregisterListener(this);
     }
 
-    protected void onResume() {
+    public void onResume() {
         super.onResume();
         senSensorManager.registerListener(this, senProximity, SensorManager.SENSOR_DELAY_NORMAL);
     }

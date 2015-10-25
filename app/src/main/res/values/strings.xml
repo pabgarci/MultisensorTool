@@ -69,10 +69,56 @@
     <string name="label_mean_filter">Mean Filter</string>
     <string name="label_filter_active">Filter Active</string>
     <string name="label_time_constant">Time Constant</string>
+    <string name="title_activity_accelerometer_logger">Accelerometer Logger</string>
+    <string name="title_activity_accelerometer_vector">Accelerometer Vector</string>
 
     <string-array name="frequency_array">
         <item>Slow</item>
         <item>Medium</item>
         <item>Fast</item>
     </string-array>
+
+    <string-array name="menu_items">
+        <item>Accelerometer</item>
+        <item>Accelerometer Logger</item>
+        <item>Accelerometer Vector</item>
+        <item>Compass</item>
+        <item>Gravity</item>
+        <item>GPS</item>
+        <item>Gyroscope</item>
+        <item>Humidity</item>
+        <item>Light</item>
+        <item>Linear Acceleration</item>
+        <item>Magnetic Field</item>
+        <item>Network</item>
+        <item>Orientation</item>
+        <item>Pressure</item>
+        <item>Proximity</item>
+        <item>Storage</item>
+        <item>Temperature</item>
+        <item>WiFi</item>
+    </string-array>
+
+    <integer-array name="menu_resources">
+        <item>@drawable/ic_car_white_48dp</item>
+        <item>@drawable/ic_chart_areaspline_white_48dp</item>
+        <item>@drawable/vector</item>
+        <item>@drawable/compass_invert</item>
+        <item>@drawable/ic_weight_white_48dp</item>
+        <item>@drawable/ic_gps_fixed_white_48dp</item>
+        <item>@drawable/gyroscope</item>
+        <item>@drawable/ic_water_white_48dp</item>
+        <item>@drawable/ic_wb_incandescent_white_48dp</item>
+        <item>@drawable/ic_vector_curve_white_48dp</item>
+        <item>@drawable/ic_magnet_white_48dp</item>
+        <item>@drawable/ic_network_cell_white_48dp</item>
+        <item>@drawable/ic_screen_rotation_white_48dp</item>
+        <item>@drawable/pressure</item>
+        <item>@drawable/ic_ruler_white_48dp</item>
+        <item>@drawable/ic_sd_storage_white_48dp</item>
+        <item>@drawable/ic_temperature_celsius_white_48dp</item>
+        <item>@drawable/ic_network_wifi_white_48dp</item>
+    </integer-array>
+
+
 </resources>

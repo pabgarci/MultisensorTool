@@ -24,6 +24,7 @@
         <activity
             android:name=".Accelerometer"
             android:label="@string/title_activity_accelerometer"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
         <activity
@@ -112,7 +113,18 @@
             android:label="@string/title_activity_gyroscope"
             android:theme="@style/PrefsTheme" >
         </activity>
-
+        <activity
+            android:name=".AccelerometerLogger"
+            android:label="@string/title_activity_accelerometer_logger"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+        <activity
+            android:name=".AccelerometerVector"
+            android:label="@string/title_activity_accelerometer_vector"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
     </application>
 
 </manifest>

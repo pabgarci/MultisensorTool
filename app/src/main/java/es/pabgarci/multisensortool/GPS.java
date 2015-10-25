@@ -1,16 +1,12 @@
 package es.pabgarci.multisensortool;
 
-import android.content.Context;
 import android.location.Address;
 import android.location.Geocoder;
-import android.location.GpsSatellite;
-import android.location.GpsStatus;
+
 import android.location.Location;
-import android.location.LocationListener;
+
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.widget.TextView;
@@ -18,7 +14,7 @@ import android.widget.TextView;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Iterator;
+
 import java.util.List;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -28,11 +24,10 @@ import com.google.android.gms.location.LocationServices;
 import java.util.Locale;
 
 
-public class GPS extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks,
+public class GPS extends Common implements GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener, com.google.android.gms.location.LocationListener {
 
     private GoogleApiClient mGoogleApiClient;
-    LocationManager locationManager = null;
 
     TextView textViewAccuracy;
     TextView textViewLatitude;
@@ -46,17 +41,9 @@ public class GPS extends AppCompatActivity implements GoogleApiClient.Connection
     TextView textViewTime;
     TextView textViewSat;
 
-    public void loadToolbar(){
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        assert getSupportActionBar() != null;
-        getSupportActionBar().setIcon(R.mipmap.ic_launcher);
-        getSupportActionBar().setTitle(R.string.app_name);
-        getSupportActionBar().setSubtitle(R.string.app_surname);
-    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gps);
         loadToolbar();
@@ -184,7 +171,7 @@ public class GPS extends AppCompatActivity implements GoogleApiClient.Connection
 
 
     @Override
-    protected void onResume() {
+    public void onResume() {
         super.onResume();
     }
 

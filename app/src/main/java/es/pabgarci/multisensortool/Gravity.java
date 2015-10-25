@@ -6,11 +6,10 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 
-public class Gravity extends AppCompatActivity implements SensorEventListener {
+public class Gravity extends Common implements SensorEventListener {
 
     private SensorManager senSensorManager;
     private Sensor senGyroscope;
@@ -19,6 +18,7 @@ public class Gravity extends AppCompatActivity implements SensorEventListener {
     TextView textViewX;
     TextView textViewY;
     TextView textViewZ;
+    TextView textViewAbs;
 
     protected void registerSensor(){
         senSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
@@ -30,15 +30,8 @@ public class Gravity extends AppCompatActivity implements SensorEventListener {
         }
     }
 
-    public void loadToolbar(){
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        assert getSupportActionBar() != null;
-        getSupportActionBar().setIcon(R.mipmap.ic_launcher);
-    }
-
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gravity);
         loadToolbar();
@@ -46,6 +39,7 @@ public class Gravity extends AppCompatActivity implements SensorEventListener {
         textViewX = (TextView)findViewById(R.id.textView_gravity_x);
         textViewY = (TextView)findViewById(R.id.textView_gravity_y);
         textViewZ = (TextView)findViewById(R.id.textView_gravity_z);
+        textViewAbs = (TextView)findViewById(R.id.textView_gravity_abs);
 
         if(senGyroscope==null){
             textViewName.setText("Accelerometer unavailable");
@@ -55,18 +49,18 @@ public class Gravity extends AppCompatActivity implements SensorEventListener {
     @Override
     public void onSensorChanged(SensorEvent event) {
         Sensor mySensor = event.sensor;
+        double gravity_abs;
 
         if (mySensor.getType() == Sensor.TYPE_ACCELEROMETER) {
-            final float alpha = (float)0.8;
-            float gravity[] = new float[3];
+            System.arraycopy(event.values, 0, acceleration, 0,
+                    event.values.length);
 
-            gravity[0] = alpha * gravity[0] + (1 - alpha) * event.values[0];
-            gravity[1] = alpha * gravity[1] + (1 - alpha) * event.values[1];
-            gravity[2] = alpha * gravity[2] + (1 - alpha) * event.values[2];
+            gravity_abs=Math.sqrt(acceleration[0]*acceleration[0]+acceleration[1]*acceleration[1]+acceleration[2]*acceleration[2]);
 
-            textViewX.setText(String.format("X-Axis = %s  m/s^2", Float.toString(gravity[0])));
-            textViewY.setText(String.format("Y-Axis = %s  m/s^2", Float.toString(gravity[1])));
-            textViewZ.setText(String.format("Z-Axis = %s  m/s^2", Float.toString(gravity[2])));
+            textViewX.setText(String.format("X-Axis: %.4f  m/s^2", acceleration[0]));
+            textViewY.setText(String.format("Y-Axis: %.4f  m/s^2", acceleration[1]));
+            textViewZ.setText(String.format("Z-Axis: %.4f  m/s^2", acceleration[2]));
+            textViewAbs.setText(String.format("Absolute: %.2f  m/s^2", gravity_abs));
         }
 
     }
@@ -76,7 +70,7 @@ public class Gravity extends AppCompatActivity implements SensorEventListener {
 
     }
 
-    protected void onPause() {
+    public void onPause() {
         super.onPause();
         senSensorManager.unregisterListener(this);
     }
@@ -86,7 +80,7 @@ public class Gravity extends AppCompatActivity implements SensorEventListener {
         senSensorManager.unregisterListener(this);
     }
 
-    protected void onResume() {
+    public void onResume() {
         super.onResume();
         senSensorManager.registerListener(this, senGyroscope, SensorManager.SENSOR_DELAY_NORMAL);
     }
