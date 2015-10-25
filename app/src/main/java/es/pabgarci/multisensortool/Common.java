@@ -64,7 +64,7 @@ public class Common extends FilterActivity{
             case "network":
                 view = getLayoutInflater().inflate(R.layout.about, null);
                 break;
-            case "orientation":
+            case "screen":
                 view = getLayoutInflater().inflate(R.layout.about, null);
                 break;
             case "pressure":
@@ -141,7 +141,7 @@ public class Common extends FilterActivity{
             case "network":
                 view = getLayoutInflater().inflate(R.layout.help_gyroscope,null);
                 break;
-            case "orientation":
+            case "screen":
                 view = getLayoutInflater().inflate(R.layout.help_gyroscope,null);
                 break;
             case "pressure":

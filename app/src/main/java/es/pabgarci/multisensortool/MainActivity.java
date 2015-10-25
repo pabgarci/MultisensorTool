@@ -33,9 +33,9 @@ public class MainActivity extends Common {
                 R.drawable.ic_vector_curve_white_48dp, //Linear Acceleration
                 R.drawable.ic_magnet_white_48dp, //Magnetic Field
                 R.drawable.ic_network_cell_white_48dp, //Network
-                R.drawable.ic_screen_rotation_white_48dp, //Orientation
                 R.drawable.pressure, //Pressure
                 R.drawable.ic_ruler_white_48dp, //Proximity
+                R.drawable.ic_screen_rotation_white_48dp, //Screen
                 R.drawable.ic_sd_storage_white_48dp, //Storage
                 R.drawable.ic_temperature_celsius_white_48dp, //Temperature
                 R.drawable.ic_network_wifi_white_48dp //WiFi
@@ -74,8 +74,8 @@ public class MainActivity extends Common {
                         break;
                     case "Accelerometer Logger":
                         notAvailableYet();
-                        //Intent intent16 = new Intent(getApplicationContext(), AccelerometerLogger.class);
-                        //startActivity(intent16);
+                        Intent intent16 = new Intent(getApplicationContext(), AccelerometerLogger.class);
+                        startActivity(intent16);
                         break;
                     case "Accelerometer Vector":
                         Intent intent17 = new Intent(getApplicationContext(), AccelerometerVector.class);
@@ -118,8 +118,8 @@ public class MainActivity extends Common {
                         Intent intent8 = new Intent(getApplicationContext(), Network.class);
                         startActivity(intent8);
                         break;
-                    case "Orientation":
-                        Intent intent9 = new Intent(getApplicationContext(), Orientation.class);
+                    case "Screen":
+                        Intent intent9 = new Intent(getApplicationContext(), Screen.class);
                         startActivity(intent9);
                         break;
                     case "Pressure":
@@ -140,9 +140,8 @@ public class MainActivity extends Common {
                         startActivity(intent13);
                         break;
                     case "WiFi":
-                        notAvailableYet();
-                        //Intent intent14 = new Intent(getApplicationContext(), WiFi.class);
-                        //startActivity(intent14);
+                        Intent intent14 = new Intent(getApplicationContext(), WiFi.class);
+                        startActivity(intent14);
                         break;
                 }
 

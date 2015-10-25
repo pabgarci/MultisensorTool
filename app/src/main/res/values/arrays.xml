@@ -11,4 +11,31 @@
         <item>1</item>
         <item>2</item>
     </string-array>
+
+    <string-array name="menu_items">
+        <item>Accelerometer</item>
+        <item>Accelerometer Logger</item>
+        <item>Accelerometer Vector</item>
+        <item>Compass</item>
+        <item>Gravity</item>
+        <item>GPS</item>
+        <item>Gyroscope</item>
+        <item>Humidity</item>
+        <item>Light</item>
+        <item>Linear Acceleration</item>
+        <item>Magnetic Field</item>
+        <item>Network</item>
+        <item>Pressure</item>
+        <item>Proximity</item>
+        <item>Screen</item>
+        <item>Storage</item>
+        <item>Temperature</item>
+        <item>WiFi</item>
+    </string-array>
+
+    <string-array name="menu_items_wifi">
+        <item>List access-points</item>
+        <item>WiFi details</item>
+    </string-array>
+
 </resources>

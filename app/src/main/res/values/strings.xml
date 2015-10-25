@@ -35,9 +35,11 @@
     <string name="action_about">About</string>
     <string name="action_start_log">Start</string>
     <string name="action_stop_log">Stop</string>
-    <string name="title_activity_orientation">Orientation</string>
+    <string name="title_activity_screen">Screen</string>
     <string name="title_activity_storage">Storage</string>
     <string name="title_activity_wi_fi">WiFi</string>
+    <string name="title_activity_wi_fi_info">WiFi Information</string>
+    <string name="title_activity_wi_fi_lister">WiFi Lister</string>
     <string name="title_activity_temperature">Temperature</string>
 	<string name="explorer_name">Explorer</string>
     <string name="accelerometer_name">Accelerometer</string>
@@ -72,31 +74,33 @@
     <string name="title_activity_accelerometer_logger">Accelerometer Logger</string>
     <string name="title_activity_accelerometer_vector">Accelerometer Vector</string>
 
+    <string name="capabilities_msg">Capabilities: %s</string>
+    <string name="frecuency_msg">Frecuency: %s MHz</string>
+    <string name="signal_level_msg">Signal Level: %s dBm</string>
+
+    <string name="wifi_is_not_enabled_msg">WiFi is not enabled</string>
+    <string name="wifi_disabling_msg">WiFi is currently being disabling</string>
+    <string name="wifi_disabled_msg">WiFi is disabled</string>
+    <string name="wifi_enabling_msg">WiFi is currently being enabling</string>
+    <string name="wifi_enabled_msg">WiFi is enabled</string>
+    <string name="wifi_unknown_state_msg">WiFi is in an unknown state</string>
+    <string name="networks_found_msg">%d networks found</string>
+
+
+    <string name="link_speed">Speed</string>
+    <string name="link_frequency">Frequency</string>
+
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="not_available">Not available</string>
+    <string name="ghz_support">5Ghz support</string>
+    <string name="current_frequency">Frequency</string>
+
+
     <string-array name="frequency_array">
         <item>Slow</item>
         <item>Medium</item>
         <item>Fast</item>
-    </string-array>
-
-    <string-array name="menu_items">
-        <item>Accelerometer</item>
-        <item>Accelerometer Logger</item>
-        <item>Accelerometer Vector</item>
-        <item>Compass</item>
-        <item>Gravity</item>
-        <item>GPS</item>
-        <item>Gyroscope</item>
-        <item>Humidity</item>
-        <item>Light</item>
-        <item>Linear Acceleration</item>
-        <item>Magnetic Field</item>
-        <item>Network</item>
-        <item>Orientation</item>
-        <item>Pressure</item>
-        <item>Proximity</item>
-        <item>Storage</item>
-        <item>Temperature</item>
-        <item>WiFi</item>
     </string-array>
 
     <integer-array name="menu_resources">

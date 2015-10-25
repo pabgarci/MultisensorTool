@@ -50,9 +50,7 @@ import es.pabgarci.multisensortool.prefs.PrefUtils;
  * @author Kaleb
  *
  */
-public abstract class FilterActivity extends AppCompatActivity implements
-		SensorEventListener
-{
+public abstract class FilterActivity extends AppCompatActivity implements SensorEventListener{
 	private final static String tag = FilterActivity.class.getSimpleName();
 	
 	protected boolean axisInverted = false;
