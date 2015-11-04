@@ -1,19 +1,17 @@
 package es.pabgarci.multisensortool;
 
-import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import es.pabgarci.multisensortool.config.FilterConfigActivity;
-import es.pabgarci.multisensortool.config.NoiseConfigActivity;
+import es.pabgarci.multisensortool.config.MainConfigActivity;
 
 public class MainActivity extends Common {
         ListView list;
@@ -29,6 +27,7 @@ public class MainActivity extends Common {
                 R.drawable.ic_gps_fixed_white_48dp, //GPS
                 R.drawable.gyroscope, //Gyroscope
                 R.drawable.ic_water_white_48dp, //Humidity
+                R.drawable.ic_flashlight_white_48dp, //Lantern
                 R.drawable.ic_wb_incandescent_white_48dp, //Light
                 R.drawable.ic_vector_curve_white_48dp, //Linear Acceleration
                 R.drawable.ic_magnet_white_48dp, //Magnetic Field
@@ -53,7 +52,7 @@ public class MainActivity extends Common {
     }
 
     public void notAvailableYet(){
-        Toast.makeText(getApplicationContext(), "Not available yet!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), R.string.text_not_available_yet, Toast.LENGTH_SHORT).show();
     }
 
 
@@ -67,79 +66,82 @@ public class MainActivity extends Common {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                switch (web[position]) {
-                    case "Accelerometer":
+                switch (position) {
+                    case 0:
                         Intent intent = new Intent(getApplicationContext(), Accelerometer.class);
                         startActivity(intent);
                         break;
-                    case "Accelerometer Logger":
-                        notAvailableYet();
+                    case 1:
                         Intent intent16 = new Intent(getApplicationContext(), AccelerometerLogger.class);
                         startActivity(intent16);
                         break;
-                    case "Accelerometer Vector":
+                    case 2:
                         Intent intent17 = new Intent(getApplicationContext(), AccelerometerVector.class);
                         startActivity(intent17);
                         break;
-                    case "Compass":
+                    case 3:
                         Intent intent15 = new Intent(getApplicationContext(), Compass.class);
                         startActivity(intent15);
                         break;
-                    case "Gravity":
+                    case 4:
                         Intent intent1 = new Intent(getApplicationContext(), Gravity.class);
                         startActivity(intent1);
                         break;
-                    case "GPS":
+                    case 5:
                         Intent intent2 = new Intent(getApplicationContext(), GPS.class);
                         startActivity(intent2);
                         break;
-                    case "Gyroscope":
+                    case 6:
                         Intent intent3 = new Intent(getApplicationContext(), Gyroscope.class);
                         startActivity(intent3);
                         break;
-                    case "Humidity":
+                    case 7:
                         Intent intent4 = new Intent(getApplicationContext(), Humidity.class);
                         startActivity(intent4);
                         break;
-                    case "Light":
+                    case 8:
+                        Intent intent18 = new Intent(getApplicationContext(), Lantern.class);
+                        startActivity(intent18);
+                        break;
+                    case 9:
                         Intent intent5 = new Intent(getApplicationContext(), Light.class);
                         startActivity(intent5);
                         break;
-                    case "Linear Acceleration":
+                    case 10:
                         notAvailableYet();
                         //Intent intent6 = new Intent(getApplicationContext(), LinearAcceleration.class);
                         //startActivity(intent6);
                         break;
-                    case "Magnetic Field":
+                    case 11:
                         Intent intent7 = new Intent(getApplicationContext(), MagneticField.class);
                         startActivity(intent7);
                         break;
-                    case "Network":
+                    case 12:
                         Intent intent8 = new Intent(getApplicationContext(), Network.class);
                         startActivity(intent8);
                         break;
-                    case "Screen":
-                        Intent intent9 = new Intent(getApplicationContext(), Screen.class);
-                        startActivity(intent9);
-                        break;
-                    case "Pressure":
+                    case 13:
                         Intent intent10 = new Intent(getApplicationContext(), Pressure.class);
                         startActivity(intent10);
                         break;
-                    case "Proximity":
+                    case 14:
                         Intent intent11 = new Intent(getApplicationContext(), Proximity.class);
                         startActivity(intent11);
                         break;
-                    case "Storage":
+                    case 15:
+                        Intent intent9 = new Intent(getApplicationContext(), Screen.class);
+                        startActivity(intent9);
+                        break;
+                    case 16:
                         notAvailableYet();
                         //Intent intent12 = new Intent(getApplicationContext(), Storage.class);
                         //startActivity(intent12);
                         break;
-                    case "Temperature":
+                    case 17:
                         Intent intent13 = new Intent(getApplicationContext(), Temperature.class);
                         startActivity(intent13);
                         break;
-                    case "WiFi":
+                    case 18:
                         Intent intent14 = new Intent(getApplicationContext(), WiFi.class);
                         startActivity(intent14);
                         break;
@@ -162,28 +164,20 @@ public class MainActivity extends Common {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings_filter) {
-            Intent intent = new Intent(getApplicationContext(), FilterConfigActivity.class);
-            startActivity(intent);
-            return true;
-        }else if (id == R.id.action_about) {
+        if (id == R.id.action_about) {
                 showAboutDialog("main");
                 return true;
-        }else if(id == R.id.menu_settings_about){
-            showAboutDialog("main");
+        }else if(id == R.id.action_settings){
+            Intent intent = new Intent(getApplicationContext(), MainConfigActivity.class);
+            startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);

@@ -170,18 +170,6 @@
                 </TableRow>
             </TableLayout>
         </RelativeLayout>
-
-        <TextView
-            android:id="@+id/label_units"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginBottom="5dp"
-            android:layout_marginEnd="10dp"
-            android:text="m/s^2"
-            android:textColor="#fff"
-            android:textSize="12sp" />
     </RelativeLayout>
 
     </LinearLayout>

@@ -36,4 +36,6 @@
     <color name="mid_red">#E21E1E</color>
 
     <color name="dark_red">#CC0000</color>
+
+    <color name="yellow">#ffff00</color>
 </resources>

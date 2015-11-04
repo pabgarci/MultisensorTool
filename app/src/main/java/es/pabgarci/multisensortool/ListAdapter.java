@@ -1,8 +1,5 @@
 package es.pabgarci.multisensortool;
 
-/**
- * Created by Pablo on 20/10/2015.
- */
 import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,9 +8,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-/**
- * Created by Pablo on 20/10/2015.
- */
 public class ListAdapter extends ArrayAdapter<String> {
 
     private final Activity context;

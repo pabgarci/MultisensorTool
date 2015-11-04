@@ -1,11 +1,16 @@
 package es.pabgarci.multisensortool;
 
 import android.app.Dialog;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Window;
 
 public class Common extends FilterActivity{
+
+    public SharedPreferences sharedPref;
 
     public void loadToolbar(){
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -169,4 +174,11 @@ public class Common extends FilterActivity{
 
         helpDialog.show();
     }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+    }
+
 }

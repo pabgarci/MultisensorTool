@@ -46,7 +46,20 @@
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="#fff"
                     android:textStyle="bold" />
+
+
             </RelativeLayout>
+            <TextView
+                android:id="@+id/label_units"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginBottom="5dp"
+                android:layout_marginRight="10dp"
+                android:text="m/s^2"
+                android:textColor="#fff"
+                android:textSize="10dp" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -176,17 +189,7 @@
                 </TableLayout>
             </RelativeLayout>
 
-            <TextView
-                android:id="@+id/label_units"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginBottom="5dp"
-                android:layout_marginRight="10dp"
-                android:text="m/s^2"
-                android:textColor="#fff"
-                android:textSize="10dp" />
+
         </RelativeLayout>
 
         <es.pabgarci.multisensortool.gauge.GaugeAcceleration

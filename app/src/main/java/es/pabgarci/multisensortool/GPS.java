@@ -1,13 +1,12 @@
 package es.pabgarci.multisensortool;
 
+import android.annotation.SuppressLint;
 import android.location.Address;
 import android.location.Geocoder;
 
 import android.location.Location;
 
-import android.location.LocationManager;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.widget.TextView;
 
@@ -59,7 +58,7 @@ public class GPS extends Common implements GoogleApiClient.ConnectionCallbacks,
         textViewTime = (TextView) findViewById(R.id.textView_gps_time);
         textViewSat = (TextView) findViewById(R.id.textView_gps_sat);
 
-        textViewAddress.setText("Getting location...");
+        textViewAddress.setText(R.string.text_getting_location);
 
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .addApi(LocationServices.API)
@@ -130,16 +129,18 @@ public class GPS extends Common implements GoogleApiClient.ConnectionCallbacks,
         textViewAltitude.setText(String.format("Altitude: %s m", altitude));
         textViewProvider.setText(String.format("Provider: %s", location.getProvider()));
         Float speed = location.getSpeed();
-        String speedStringMS = Float.toString(speed);
         String speedStringKMH = Float.toString(speed*(float)3.6)+"kmh";
         String speedStringMPH = Float.toString(speed*(float)2.23694)+"mph";
         textViewSpeedMS.setText(String.format("Speed:\n%s m/s", speed));
         textViewSpeed.setText(String.format("%s\n%s", speedStringKMH, speedStringMPH));
         long time = location.getTime();
         Date date = new Date(time);
+
+        @SuppressLint("SimpleDateFormat")
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss, dd-MM-yyyy");
+
         String timeString = sdf.format(date);
-        textViewTime.setText(String.format("Time UTC: "+timeString));
+        textViewTime.setText(String.format("%dUTC: %s", R.string.text_time, timeString));
 
     }
 

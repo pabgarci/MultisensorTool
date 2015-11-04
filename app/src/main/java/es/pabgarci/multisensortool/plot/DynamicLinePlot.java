@@ -121,7 +121,6 @@ public class DynamicLinePlot
 		this.plot.setDomainStepValue(5);
 		this.plot.setTicksPerRangeLabel(3);
 		this.plot.getDomainLabelWidget().pack();
-		this.plot.setRangeLabel("Meter's/Sec^2");
 		this.plot.getRangeLabelWidget().pack();
 		this.plot.getLegendWidget().setWidth(0.7f);
 		this.plot.setGridPadding(15, 15, 15, 15);

@@ -1,15 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="frequency">
-        <item>Normal (Slow)</item>
-        <item>Game (Medium)</item>
-        <item>Fastest (Fast)</item>
+        <item>Slow</item>
+        <item>Medium</item>
+        <item>Fast</item>
     </string-array>
-    
+
     <string-array name="frequencyValues">
         <item>0</item>
         <item>1</item>
         <item>2</item>
+    </string-array>
+
+    <string-array name="low_filter">
+        <item>No filtering</item>
+        <item>Low</item>
+        <item>Medium</item>
+        <item>High</item>
+    </string-array>
+
+    <string-array name="low_filter_values">
+        <item>0</item>
+        <item>0.1</item>
+        <item>0.25</item>
+        <item>0.5</item>
+    </string-array>
+
+    <string-array name="wifi">
+        <item>Never</item>
+        <item>Slow (500ms)</item>
+        <item>Medium (2s)</item>
+        <item>Fast (5s)</item>
+    </string-array>
+
+    <string-array name="wifiValues">
+        <item>0</item>
+        <item>5000</item>
+        <item>2000</item>
+        <item>500</item>
     </string-array>
 
     <string-array name="menu_items">
@@ -21,6 +49,7 @@
         <item>GPS</item>
         <item>Gyroscope</item>
         <item>Humidity</item>
+        <item>Lantern</item>
         <item>Light</item>
         <item>Linear Acceleration</item>
         <item>Magnetic Field</item>

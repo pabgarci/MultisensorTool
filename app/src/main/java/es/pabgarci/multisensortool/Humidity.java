@@ -6,10 +6,11 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 
-public class Humidity extends Common implements SensorEventListener {
+import es.pabgarci.multisensortool.plot.Plot;
+
+public class Humidity extends Plot implements SensorEventListener {
 
     private SensorManager senSensorManager;
     private Sensor senHumidity;
@@ -23,11 +24,13 @@ public class Humidity extends Common implements SensorEventListener {
     TextView textViewVersion;
     TextView textViewName;
 
+    float humidity;
+
     protected void registerSensor(){
         senSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         senHumidity = senSensorManager.getDefaultSensor(Sensor.TYPE_RELATIVE_HUMIDITY);
         if(senHumidity==null){
-            textViewValue.setText("Humidity sensor unavailable");
+            textViewValue.setText(R.string.text_humidity_unavailable);
         }else{
             senSensorManager.registerListener(this, senHumidity , SensorManager.SENSOR_DELAY_NORMAL);
         }
@@ -49,13 +52,26 @@ public class Humidity extends Common implements SensorEventListener {
         textViewVersion = (TextView)findViewById(R.id.textView_humidity_version);
         textViewName = (TextView)findViewById(R.id.textView_humidity_name);
         registerSensor();
+        initPlot("humidity");
+
+        runnable = new Runnable()
+        {
+            @Override
+            public void run()
+            {
+                handler.postDelayed(this, 10);
+                plot("humidity",humidity);
+            }
+        };
+
     }
 
     @Override
     public void onSensorChanged(SensorEvent event) {
         Sensor mySensor = event.sensor;
         if (mySensor.getType() == Sensor.TYPE_RELATIVE_HUMIDITY) {
-            textViewValue.setText(String.format("Value: %s lux", Float.toString(event.values[0])));
+            humidity = event.values[0];
+            textViewValue.setText(String.format("Value: %s %", Float.toString(humidity)));
             textViewPower.setText(String.format("Power: %s", mySensor.getPower()));
             textViewMaxRange.setText(String.format("Max range: %s", mySensor.getMaximumRange()));
             textViewMinDelay.setText(String.format("Min delay: %s", mySensor.getMinDelay()));

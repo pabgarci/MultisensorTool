@@ -5,11 +5,11 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 
-public class Pressure extends Common  implements SensorEventListener {
+import es.pabgarci.multisensortool.plot.Plot;
+
+public class Pressure extends Plot implements SensorEventListener {
     private SensorManager senSensorManager;
     private Sensor senPressure;
 
@@ -22,12 +22,13 @@ public class Pressure extends Common  implements SensorEventListener {
     TextView textViewVersion;
     TextView textViewName;
 
+    float pressure;
 
     protected void registerSensor(){
         senSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         senPressure = senSensorManager.getDefaultSensor(Sensor.TYPE_PRESSURE);
         if(senPressure==null){
-            textViewValue.setText("Pressure sensor unavailable");
+            textViewValue.setText(R.string.text_pressure_unavailable);
         }else{
             senSensorManager.registerListener(this, senPressure , SensorManager.SENSOR_DELAY_NORMAL);
         }
@@ -49,6 +50,18 @@ public class Pressure extends Common  implements SensorEventListener {
         textViewVersion = (TextView)findViewById(R.id.textView_pressure_version);
         textViewName = (TextView)findViewById(R.id.textView_pressure_name);
         registerSensor();
+
+        initPlot("pressure");
+
+        runnable = new Runnable()
+        {
+            @Override
+            public void run()
+            {
+                handler.postDelayed(this, 10);
+                plot("pressure",pressure);
+            }
+        };
     }
 
     @Override
@@ -56,7 +69,8 @@ public class Pressure extends Common  implements SensorEventListener {
         Sensor mySensor = event.sensor;
 
         if (mySensor.getType() == Sensor.TYPE_PRESSURE) {
-            textViewValue.setText(String.format("Value: %s hPa", Float.toString(event.values[0])));
+            pressure = event.values[0];
+            textViewValue.setText(String.format("Value: %s hPa", Float.toString(pressure)));
             textViewPower.setText(String.format("Power: %s", mySensor.getPower()));
             textViewMaxRange.setText(String.format("Max range: %s", mySensor.getMaximumRange()));
             textViewMinDelay.setText(String.format("Min delay: %s", mySensor.getMinDelay()));

@@ -2,9 +2,6 @@ package es.pabgarci.multisensortool;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
@@ -41,12 +38,12 @@ public class WiFi extends Common {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                switch (web[position]) {
-                    case "List access-points":
+                switch (position) {
+                    case 0:
                         Intent intent = new Intent(getApplicationContext(), WiFiLister.class);
                         startActivity(intent);
                         break;
-                    case "WiFi details":
+                    case 1:
                         Intent intent2 = new Intent(getApplicationContext(), WiFiInfo.class);
                         startActivity(intent2);
                         break;

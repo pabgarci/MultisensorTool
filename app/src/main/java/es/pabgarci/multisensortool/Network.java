@@ -11,19 +11,19 @@ public class Network extends Common {
     String[] auxArray;
 
     public String getPhoneType(){
-        String aux="Phone type: ";
+        String aux="";
         switch (tm.getPhoneType()){
             case (TelephonyManager.PHONE_TYPE_CDMA):
-                aux.concat("CDMA");
+                aux="CDMA";
             break;
             case (TelephonyManager.PHONE_TYPE_GSM):
-                aux.concat("GSM");
+                aux="GSM";
             break;
             case (TelephonyManager.PHONE_TYPE_SIP):
-                aux.concat("SIP");
+                aux="SIP";
             break;
             case (TelephonyManager.PHONE_TYPE_NONE):
-                aux.concat("NONE");
+                aux="NONE";
             break;
 
         }
@@ -31,77 +31,77 @@ public class Network extends Common {
     }
 
     public String getNetworkType(){
-        String aux="Network type: ";
+        String aux="";
         switch (tm.getNetworkType()){
             case (TelephonyManager.NETWORK_TYPE_1xRTT):
-                aux.concat("1xRTT");
+                aux="1xRTT";
                 break;
             case (TelephonyManager.NETWORK_TYPE_CDMA):
-                aux.concat("CDMA");
+                aux="CDMA";
                 break;
             case (TelephonyManager.NETWORK_TYPE_EDGE):
-                aux.concat("EDGE");
+                aux="EDGE";
                 break;
             case (TelephonyManager.NETWORK_TYPE_EHRPD):
-                aux.concat("EHRPD");
+                aux="EHRPD";
                 break;
             case (TelephonyManager.NETWORK_TYPE_EVDO_0):
-                aux.concat("EVDO 0");
+                aux="EVDO 0";
                 break;
             case (TelephonyManager.NETWORK_TYPE_EVDO_A):
-                aux.concat("EVDO A");
+                aux="EVDO A";
                 break;
             case (TelephonyManager.NETWORK_TYPE_EVDO_B):
-                aux.concat("EVDO B");
+                aux="EVDO B";
                 break;
             case (TelephonyManager.NETWORK_TYPE_GPRS):
-                aux.concat("GPRS");
+                aux="GPRS";
                 break;
             case (TelephonyManager.NETWORK_TYPE_HSDPA):
-                aux.concat("HSDPA");
+                aux="HSDPA";
                 break;
             case (TelephonyManager.NETWORK_TYPE_HSPA):
-                aux.concat("HSPA");
+                aux="HSPA";
                 break;
             case (TelephonyManager.NETWORK_TYPE_HSUPA):
-                aux.concat("HSUPA");
+                aux="HSUPA";
                 break;
             case (TelephonyManager.NETWORK_TYPE_IDEN):
-                aux.concat("IDEN");
+                aux="IDEN";
                 break;
             case (TelephonyManager.NETWORK_TYPE_LTE):
-                aux.concat("LTE");
+                aux="LTE";
                 break;
             case (TelephonyManager.NETWORK_TYPE_UMTS):
-                aux.concat("UMTS");
+                aux="UMTS";
                 break;
             case (TelephonyManager.NETWORK_TYPE_UNKNOWN):
-                aux.concat("UNKNOWN");
+                aux="UNKNOWN";
                 break;
         }
         return aux;
     }
 
     public String getSIMState(){
-        String aux="SIM state: ";
+        String aux="";
         switch (tm.getSimState()){
             case (TelephonyManager.SIM_STATE_ABSENT):
-                aux.concat("Absent");
+                aux=getResources().getString(R.string.network_absent);
                 break;
             case (TelephonyManager.SIM_STATE_NETWORK_LOCKED):
-                aux.concat("Locked");
+                aux=getResources().getString(R.string.network_locked);
                 break;
             case (TelephonyManager.SIM_STATE_PIN_REQUIRED):
-                aux.concat("PIN Required");
+                aux="PIN"+getResources().getString(R.string.network_required);
                 break;
             case (TelephonyManager.SIM_STATE_PUK_REQUIRED):
-                aux.concat("PUK Required");
+                aux="PUK"+getResources().getString(R.string.network_required);
                 break;
             case (TelephonyManager.SIM_STATE_READY):
-                aux.concat("Ready");
+                aux=getResources().getString(R.string.network_ready);
                 break;
             case (TelephonyManager.SIM_STATE_UNKNOWN):
-                aux.concat("UNKNOWN");
+                aux=getResources().getString(R.string.network_unknown);
                 break;
         }
         return aux;
@@ -112,30 +112,30 @@ public class Network extends Common {
         String isRoaming;
         boolean isRoamingAux=tm.isNetworkRoaming();
         if(isRoamingAux){
-            isRoaming="YES";
+            isRoaming=getResources().getString(R.string.yes);
         }else{
-            isRoaming="NO";
+            isRoaming=getResources().getString(R.string.no);
         }
-        return "Roaming: "+isRoaming;
+        return isRoaming;
     }
 
 
     public void setList(){
         ListAdapterSimple adapter = new ListAdapterSimple(Network.this,  auxArray = new String[]{
-                "Device ID: " + tm.getDeviceId(),
-                "Subscriber ID: " + tm.getSubscriberId(),
-                "SIM State: " + getSIMState(),
-                "SIM Serial number: " + tm.getSimSerialNumber(),
-                "SIM Operator ID: " + tm.getSimOperator(),
-                "SIM Operator: " + tm.getSimOperatorName(),
-                "SIM Country (ISO): " + tm.getSimCountryIso(),
+                getResources().getString(R.string.network_device_id)+": " + tm.getDeviceId(),
+                getResources().getString(R.string.network_subscriber_id)+": " + tm.getSubscriberId(),
+                getResources().getString(R.string.network_sim_state)+": " + getSIMState(),
+                getResources().getString(R.string.network_sim_serial)+": " + tm.getSimSerialNumber(),
+                getResources().getString(R.string.network_sim_operator_id)+ ": " + tm.getSimOperator(),
+                getResources().getString( R.string.network_sim_operator)+": " + tm.getSimOperatorName(),
+                getResources().getString(R.string.network_sim_country)+" (ISO): " + tm.getSimCountryIso(),
                 "Roaming: " + isRoaming(),
-                "Phone type: " + getPhoneType(),
-                "Network type: " + getNetworkType(),
-                "Network Operator ID: " + tm.getNetworkOperator(),
-                "Network Operator: " + tm.getNetworkOperatorName(),
-                "Network Country (ISO): " + tm.getNetworkCountryIso(),
-                "Device software version: " + tm.getDeviceSoftwareVersion()
+                getResources().getString(R.string.network_phone_type)+": " + getPhoneType(),
+                getResources().getString(R.string.network_type)+": " + getNetworkType(),
+                getResources().getString(R.string.network_operator_id)+": " + tm.getNetworkOperator(),
+                getResources().getString(R.string.network_operator)+": " + tm.getNetworkOperatorName(),
+                getResources().getString(R.string.network_country)+" (ISO): "+ tm.getNetworkCountryIso(),
+                getResources().getString(R.string.network_software)+": " + tm.getDeviceSoftwareVersion()
         });
         ListView list=(ListView)findViewById(R.id.listViewNetwork);
         list.setAdapter(adapter);
@@ -143,7 +143,7 @@ public class Network extends Common {
 
     public void noPhone(){
         ListAdapterSimple adapter = new ListAdapterSimple(Network.this,  auxArray = new String[]{
-                "Device without modem (SIM)."
+                getResources().getString(R.string.text_no_sim)
         });
         ListView list=(ListView)findViewById(R.id.listViewNetwork);
         list.setAdapter(adapter);

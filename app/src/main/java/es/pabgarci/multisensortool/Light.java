@@ -6,10 +6,11 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 
-public class Light extends Common  implements SensorEventListener {
+import es.pabgarci.multisensortool.plot.Plot;
+
+public class Light extends Plot implements SensorEventListener {
     private SensorManager senSensorManager;
     private Sensor senLight;
 
@@ -22,12 +23,13 @@ public class Light extends Common  implements SensorEventListener {
     TextView textViewVersion;
     TextView textViewName;
 
+    float light;
 
     protected void registerSensor(){
         senSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         senLight = senSensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
         if(senLight==null){
-            textViewValue.setText("Light sensor unavailable");
+            textViewValue.setText(R.string.text_light_unavailable);
         }else{
             senSensorManager.registerListener(this, senLight , SensorManager.SENSOR_DELAY_NORMAL);
         }
@@ -48,6 +50,17 @@ public class Light extends Common  implements SensorEventListener {
         textViewVersion = (TextView)findViewById(R.id.textView_light_version);
         textViewName = (TextView)findViewById(R.id.textView_light_name);
         registerSensor();
+        initPlot("light");
+
+        runnable = new Runnable()
+        {
+            @Override
+            public void run()
+            {
+                handler.postDelayed(this, 10);
+                plot("light",light);
+            }
+        };
     }
 
     @Override
@@ -55,7 +68,8 @@ public class Light extends Common  implements SensorEventListener {
         Sensor mySensor = event.sensor;
 
         if (mySensor.getType() == Sensor.TYPE_LIGHT) {
-            textViewValue.setText(String.format("Value: %s lux", Float.toString(event.values[0])));
+            light = event.values[0];
+            textViewValue.setText(String.format("Value: %s lux", Float.toString(light)));
             textViewPower.setText(String.format("Power: %s", mySensor.getPower()));
             textViewMaxRange.setText(String.format("Max range: %s", mySensor.getMaximumRange()));
             textViewMinDelay.setText(String.format("Min delay: %s", mySensor.getMinDelay()));

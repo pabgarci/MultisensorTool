@@ -5,10 +5,11 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 
-public class Temperature extends Common implements SensorEventListener{
+import es.pabgarci.multisensortool.plot.Plot;
+
+public class Temperature extends Plot implements SensorEventListener{
 
     private SensorManager senSensorManager;
     private Sensor senTemperature;
@@ -22,12 +23,13 @@ public class Temperature extends Common implements SensorEventListener{
     TextView textViewVersion;
     TextView textViewName;
 
+    float temperature;
 
     protected void registerSensor(){
         senSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         senTemperature = senSensorManager.getDefaultSensor(Sensor.TYPE_AMBIENT_TEMPERATURE);
         if(senTemperature==null){
-            textViewValue.setText("Temperature sensor unavailable");
+            textViewValue.setText(R.string.text_temperature_unavailable);
         }else{
             senSensorManager.registerListener(this, senTemperature , SensorManager.SENSOR_DELAY_NORMAL);
         }
@@ -49,6 +51,18 @@ public class Temperature extends Common implements SensorEventListener{
         textViewVersion = (TextView)findViewById(R.id.textView_temperature_version);
         textViewName = (TextView)findViewById(R.id.textView_temperature_name);
         registerSensor();
+
+        initPlot("temperature");
+
+        runnable = new Runnable()
+        {
+            @Override
+            public void run()
+            {
+                handler.postDelayed(this, 10);
+                plot("temperature",temperature);
+            }
+        };
     }
 
     @Override
@@ -56,7 +70,8 @@ public class Temperature extends Common implements SensorEventListener{
         Sensor mySensor = event.sensor;
 
         if (mySensor.getType() == Sensor.TYPE_AMBIENT_TEMPERATURE) {
-            textViewValue.setText(String.format("Value: %s ºC", Float.toString(event.values[0])));
+            temperature = event.values[0];
+            textViewValue.setText(String.format("Value: %s ºC", Float.toString(temperature)));
             textViewPower.setText(String.format("Power: %s", mySensor.getPower()));
             textViewMaxRange.setText(String.format("Max range: %s", mySensor.getMaximumRange()));
             textViewMinDelay.setText(String.format("Min delay: %s", mySensor.getMinDelay()));

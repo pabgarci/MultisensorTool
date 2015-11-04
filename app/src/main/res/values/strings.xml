@@ -10,22 +10,43 @@
     <string name="title_activity_network">Network</string>
     <string name="title_activity_humidity">Humidity</string>
     <string name="title_activity_pressure">Pressure</string>
+    <string name="text_getting_location">Getting location...</string>
+    <string name="text_accelerometer_unavailable">Accelerometer unavailable</string>
+    <string name="text_humidity_unavailable">Humidity sensor unavailable</string>
+    <string name="text_pressure_unavailable">Pressure sensor unavailable</string>
+    <string name="text_temperature_unavailable">Temperature sensor unavailable</string>
+    <string name="text_light_unavailable">Light sensor unavailable</string>
+    <string name="text_magnetic_unavailable">Magnetic sensor unavailable</string>
+    <string name="text_proximity_far">\'Far\' state</string>
+    <string name="text_proximity_near">\'Near\' state</string>
+    <string name="text_proximity_unavailable">Proximity sensor unavailable</string>
+    <string name="text_screen_orientation">Screen orientation</string>
+    <string name="text_portrait">Portrait</string>
+    <string name="text_landscape">Landscape</string>
+    <string name="text_not_available_yet">Not available yet!</string>
     <string name="title_activity_proximity">Proximity</string>
     <string name="title_activity_compass">Compass</string>
+    <string name="text_5_support">5GHz support</string>
+    <string name="text_time">Time</string>
     <string name="title_activity_magnetic_field">MagneticField</string>
     <string name="title_activity_linear_acceleration">LinearAcceleration</string>
+    <string name="search_interval">Search interval</string>
     <string name="title_activity_gyroscope">Gyroscope</string>
     <string name="sensor_label">Sensor</string>
     <string name="sensor_calibrated_name">GyroscopeCalibrated</string>
+    <string name="sensor_frequency">Sensor frequency</string>
+    <string name="text_low_filter">Low pass filter</string>
+    <string name="text_filter_level">Filtering level</string>
     <string name="sensor_uncalibrated_name">GyroscopeUncalibrated</string>
     <string name="sensor_active">Active</string>
     <string name="sensor_unavailable">Unavailable</string>
     <string name="action_config">Settings</string>
     <string name="action_reset">Reset</string>
-    <string name="label_x_axis">X-Axis:</string>
-    <string name="label_y_axis">Y-Axis:</string>
-    <string name="label_z_axis">Z-Axis:</string>
+    <string name="label_x_axis">X-Axis</string>
+    <string name="label_y_axis">Y-Axis</string>
+    <string name="label_z_axis">Z-Axis</string>
     <string name="value_default">0.0</string>
+    <string name="not_supported">Your device does not have flash light</string>
     <string name="value_default_mean_filter">0.5</string>
     <string name="value_default_complimentary_filter">0.5</string>
     <string name="developer_url">KircherElectronics.com</string>
@@ -41,6 +62,7 @@
     <string name="title_activity_wi_fi_info">WiFi Information</string>
     <string name="title_activity_wi_fi_lister">WiFi Lister</string>
     <string name="title_activity_temperature">Temperature</string>
+    <string name="title_activity_settings">Settings</string>
 	<string name="explorer_name">Explorer</string>
     <string name="accelerometer_name">Accelerometer</string>
     <string name="acceleration_name">Acceleration</string>
@@ -86,6 +108,27 @@
     <string name="wifi_unknown_state_msg">WiFi is in an unknown state</string>
     <string name="networks_found_msg">%d networks found</string>
 
+    <string name="network_phone_type">Phone type</string>
+    <string name="network_net_type">Network type</string>
+    <string name="network_sim_state">SIM state</string>
+    <string name="network_locked">Locked</string>
+    <string name="network_absent">Absent</string>
+    <string name="network_required">required</string>
+    <string name="network_ready">Ready</string>
+    <string name="network_unknown">Unknown</string>
+
+    <string name="network_device_id">Device ID</string>
+    <string name="network_subscriber_id">Subscriber ID</string>
+    <string name="network_sim_serial">SIM serial umber</string>
+    <string name="network_sim_operator_id">SIM operator ID</string>
+    <string name="network_sim_operator">SIM operator</string>
+    <string name="network_sim_country">SIM country</string>
+    <string name="network_type">Network type</string>
+    <string name="network_operator_id">Network operator ID</string>
+    <string name="network_operator">Network operator</string>
+    <string name="network_country">Network country</string>
+    <string name="network_software">Device software version</string>
+
 
     <string name="link_speed">Speed</string>
     <string name="link_frequency">Frequency</string>
@@ -123,6 +166,7 @@
         <item>@drawable/ic_temperature_celsius_white_48dp</item>
         <item>@drawable/ic_network_wifi_white_48dp</item>
     </integer-array>
+    <string name="title_activity_lantern">Lantern</string>
 
 
 </resources>

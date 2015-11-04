@@ -6,6 +6,10 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" />
+
 
     <application
         android:allowBackup="true"
@@ -32,16 +36,19 @@
         <activity
             android:name=".Gravity"
             android:label="@string/title_activity_gravity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
         <activity
             android:name=".Light"
             android:label="@string/title_activity_light"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
         <activity
             android:name=".GPS"
             android:label="@string/title_activity_gps"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
         <activity
@@ -52,11 +59,13 @@
         <activity
             android:name=".Humidity"
             android:label="@string/title_activity_humidity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
         <activity
             android:name=".Pressure"
             android:label="@string/title_activity_pressure"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
         <activity
@@ -67,11 +76,13 @@
         <activity
             android:name=".Compass"
             android:label="@string/title_activity_compass"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
         <activity
             android:name=".MagneticField"
             android:label="@string/title_activity_magnetic_field"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
         <activity
@@ -107,6 +118,7 @@
         <activity
             android:name=".Temperature"
             android:label="@string/title_activity_temperature"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
         <activity
@@ -114,16 +126,6 @@
             android:label="@string/title_activity_gyroscope"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" >
-        </activity>
-        <activity
-            android:name=".config.FilterConfigActivity"
-            android:label="@string/title_activity_gyroscope"
-            android:theme="@style/PrefsTheme" >
-        </activity>
-        <activity
-            android:name=".config.NoiseConfigActivity"
-            android:label="@string/title_activity_gyroscope"
-            android:theme="@style/PrefsTheme" >
         </activity>
         <activity
             android:name=".AccelerometerLogger"
@@ -136,6 +138,27 @@
             android:label="@string/title_activity_accelerometer_vector"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+        <activity
+            android:name=".Lantern"
+            android:label="@string/title_activity_lantern"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+        <activity
+            android:name=".config.WiFiConfigActivity"
+            android:label="@string/title_activity_settings"
+            android:theme="@style/DialogTheme" >
+        </activity>
+        <activity
+            android:name=".config.FilterConfigActivity"
+            android:label="@string/title_activity_settings"
+            android:theme="@style/DialogTheme" >
+        </activity>
+        <activity
+            android:name=".config.MainConfigActivity"
+            android:label="@string/title_activity_settings"
+            android:theme="@style/DialogTheme" >
         </activity>
     </application>
 

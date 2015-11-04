@@ -45,26 +45,26 @@ public class WiFiListerAdapter extends BaseAdapter {
 
             if(convertView==null) {
                 LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                convertView = inflater.inflate(R.layout.list_wifi_g, null);
+                convertView = inflater.inflate(R.layout.list_wifi_g, parent, false);
             }
 
             String stringCapabilities;
 
             TextView txtSSID = (TextView)convertView.findViewById(R.id.txtSSID);
-            TextView txtBSSID = (TextView)convertView.findViewById(R.id.txtBSSID);
+            //TextView txtBSSID = (TextView)convertView.findViewById(R.id.txtBSSID);
             TextView txtCapabilities = (TextView)convertView.findViewById(R.id.txtCapabilities);
             TextView txtFrecuency = (TextView)convertView.findViewById(R.id.txtFrecuency);
             TextView txtLevel = (TextView)convertView.findViewById(R.id.txtLevel);
 
-            txtSSID.setText(result.SSID+"\n("+result.BSSID+")");
+            txtSSID.setText(String.format("%s\n(%s)", result.SSID, result.BSSID));
             //txtBSSID.setText(result.BSSID);
 
             stringCapabilities = result.capabilities.replace("]","]\n");
             stringCapabilities = stringCapabilities.replace("ESS","Open");
 
-            txtCapabilities.setText(stringCapabilities+" ");
-            txtFrecuency.setText(Integer.toString(result.frequency)+" ");
-            txtLevel.setText(Integer.toString(result.level)+" ");
+            txtCapabilities.setText(String.format("%s ", stringCapabilities));
+            txtFrecuency.setText(String.format("%s ", Integer.toString(result.frequency)));
+            txtLevel.setText(String.format("%s ", Integer.toString(result.level)));
 
             return convertView;
         }

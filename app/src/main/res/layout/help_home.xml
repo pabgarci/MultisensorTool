@@ -114,7 +114,6 @@
                 android:textColor="#fff"
                 android:textStyle="bold" />
 
-            ////////////
 
             <TextView
                 android:id="@+id/text_introduction_1"

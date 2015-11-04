@@ -5,15 +5,15 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 
 import android.widget.TextView;
 
-public class MagneticField extends Common implements SensorEventListener {
+import es.pabgarci.multisensortool.plot.Plot;
+
+public class MagneticField extends Plot implements SensorEventListener {
 
     private SensorManager senSensorManager;
     private Sensor senMagnetic;
-    private Sensor senAccelerometer;
 
     TextView textViewValue;
     TextView textViewValue2;
@@ -25,21 +25,17 @@ public class MagneticField extends Common implements SensorEventListener {
     TextView textViewVersion;
     TextView textViewName;
 
-
-    private float gravity[] = new float[3];
-    private float magnetic[] = new float[3];
-
-    private final float alpha = (float) 0.8;
+    double magnetic_field;
 
     protected void registerSensor(){
         senSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         senMagnetic = senSensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
-        senAccelerometer = senSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        Sensor senAccelerometer = senSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         if(senMagnetic==null){
-            textViewValue.setText("Magnetic sensor unavailable");
+            textViewValue.setText(R.string.text_magnetic_unavailable);
         }else{
             senSensorManager.registerListener(this, senMagnetic , SensorManager.SENSOR_DELAY_NORMAL);
-            senSensorManager.registerListener(this, senAccelerometer , SensorManager.SENSOR_DELAY_NORMAL);
+            senSensorManager.registerListener(this, senAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
         }
 
     }
@@ -60,6 +56,17 @@ public class MagneticField extends Common implements SensorEventListener {
         textViewVersion = (TextView)findViewById(R.id.textView_magnetic_version);
         textViewName = (TextView)findViewById(R.id.textView_magnetic_name);
         registerSensor();
+        initPlot("magnetic");
+
+        runnable = new Runnable()
+        {
+            @Override
+            public void run()
+            {
+                handler.postDelayed(this, 10);
+                plot("magnetic",(float)magnetic_field);
+            }
+        };
     }
 
     @Override
@@ -67,8 +74,9 @@ public class MagneticField extends Common implements SensorEventListener {
         Sensor mySensor = event.sensor;
 
         if (mySensor.getType() == Sensor.TYPE_MAGNETIC_FIELD) {
-            textViewValue.setText(String.format("Magnetic field: %s", Math.sqrt(event.values[0]*event.values[0] +
-                    event.values[1]*event.values[1] + event.values[2]*event.values[2])));
+            magnetic_field = Math.sqrt(event.values[0]*event.values[0] +
+                    event.values[1]*event.values[1] + event.values[2]*event.values[2]);
+            textViewValue.setText(String.format("Magnetic field: %s", magnetic_field ));
             textViewPower.setText(String.format("Power: %s", mySensor.getPower()));
             textViewMaxRange.setText(String.format("Max range: %s", mySensor.getMaximumRange()));
             textViewMinDelay.setText(String.format("Min delay: %s", mySensor.getMinDelay()));

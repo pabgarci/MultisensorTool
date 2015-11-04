@@ -25,7 +25,6 @@ public class Compass extends Common implements SensorEventListener {
     private float[] mOrientation = new float[3];
     private float mCurrentDegree = 0f;
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

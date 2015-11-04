@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="WiFi">
+        <ListPreference
+            android:title="@string/search_interval"
+            android:key="wifi_interval"
+            android:defaultValue="5000"
+            android:entries="@array/wifi"
+            android:entryValues="@array/wifiValues" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

@@ -35,7 +35,7 @@ public class Gyroscope extends Common {
 		gaugeAcceleration = (GaugeAcceleration) findViewById(R.id.gauge_acceleration);
 		gaugeRotation = (GaugeRotation) findViewById(R.id.gauge_rotation);
 
-		runable = new Runnable()
+		runnable = new Runnable()
 		{
 			@Override
 			public void run()
@@ -83,21 +83,10 @@ public class Gyroscope extends Common {
 	}
 
 
-	private void updateGauges()
-	{
-		if (!lpfLinearAccelEnabled && !imuLaCfOrienationEnabled
-				&& !imuLaCfRotationMatrixEnabled && !imuLaCfQuaternionEnabled
-				&& !imuLaKfQuaternionEnabled && !androidLinearAccelEnabled)
-		{
-			gaugeAcceleration.updatePoint(acceleration[0], acceleration[1],
-					Color.rgb(255, 61, 0));
-			gaugeRotation.updateRotation(acceleration);
-		}
-		else
-		{
-			gaugeAcceleration.updatePoint(linearAcceleration[0],
-					linearAcceleration[1], Color.rgb(255, 61, 0));
-			gaugeRotation.updateRotation(linearAcceleration);
-		}
+	private void updateGauges() {
+
+		gaugeAcceleration.updatePoint(acceleration[0], acceleration[1],
+				Color.rgb(255, 61, 0));
+		gaugeRotation.updateRotation(acceleration);
 	}
 }

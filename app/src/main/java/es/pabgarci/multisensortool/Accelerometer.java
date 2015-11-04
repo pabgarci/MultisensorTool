@@ -144,19 +144,12 @@ public class Accelerometer extends Common implements SensorEventListener {
         {
             // Log the data
             case R.id.action_settings_sensor:
-                Intent intent = new Intent(this, FilterConfigActivity.class);
+                Intent intent = new Intent(getApplicationContext(), FilterConfigActivity.class);
                 startActivity(intent);
                 return true;
-
-            // Log the data
-            case R.id.menu_settings_help:
-                showHelpDialog("accelerometer");
-                return true;
-
             case R.id.menu_settings_about:
                 showAboutDialog("accelerometer");
                 return true;
-
             default:
                 return super.onOptionsItemSelected(item);
         }

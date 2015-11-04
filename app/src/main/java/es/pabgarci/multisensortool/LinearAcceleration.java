@@ -6,7 +6,6 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 
 public class LinearAcceleration extends Common implements SensorEventListener {
@@ -24,7 +23,7 @@ public class LinearAcceleration extends Common implements SensorEventListener {
         senSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         senAccelerometer = senSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         if(senAccelerometer==null){
-            textViewName.setText("Accelerometer unavailable");
+            textViewName.setText(R.string.text_accelerometer_unavailable);
         }else {
             senSensorManager.registerListener(this, senAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
         }
@@ -40,7 +39,7 @@ public class LinearAcceleration extends Common implements SensorEventListener {
         textViewY = (TextView)findViewById(R.id.textView_linear_y);
         textViewZ = (TextView)findViewById(R.id.textView_linear_z);
         if(senAccelerometer==null){
-            textViewName.setText("Accelerometer unavailable");
+            textViewName.setText(R.string.text_accelerometer_unavailable);
         }
     }
 

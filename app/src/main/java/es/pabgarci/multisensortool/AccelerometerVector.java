@@ -26,7 +26,7 @@ public class AccelerometerVector extends Common implements SensorEventListener{
 
         view = (AccelerationVectorView) findViewById(R.id.vector_acceleration);
 
-        runable = new Runnable()
+        runnable = new Runnable()
         {
             @Override
             public void run()
@@ -60,12 +60,6 @@ public class AccelerometerVector extends Common implements SensorEventListener{
                 Intent intent = new Intent(this, FilterConfigActivity.class);
                 startActivity(intent);
                 return true;
-
-            // Log the data
-            case R.id.menu_settings_help:
-                showHelpDialog("vector");
-                return true;
-
             case R.id.menu_settings_about:
                 showAboutDialog("vector");
                 return true;
@@ -76,18 +70,10 @@ public class AccelerometerVector extends Common implements SensorEventListener{
     }
 
 
-    private void updateVector()
-    {
-        if (!lpfLinearAccelEnabled && !imuLaCfOrienationEnabled
-                && !imuLaCfRotationMatrixEnabled && !imuLaCfQuaternionEnabled
-                && !imuLaKfQuaternionEnabled && !androidLinearAccelEnabled)
-        {
+    private void updateVector(){
+
             view.updatePoint(acceleration[0], acceleration[1]);
-        }
-        else
-        {
-            view.updatePoint(linearAcceleration[0], linearAcceleration[1]);
-        }
+
     }
 
 }

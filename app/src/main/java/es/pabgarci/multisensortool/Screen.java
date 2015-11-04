@@ -15,10 +15,10 @@ public class Screen extends Common{
         orientation = getResources().getConfiguration().orientation;
         switch (orientation) {
             case Configuration.ORIENTATION_LANDSCAPE:
-                textViewOrientation.setText("Screen orientation: Landscape");
+                textViewOrientation.setText(String.format("%s: %s", getResources().getString(R.string.text_screen_orientation), getResources().getString(R.string.text_landscape)));
                 break;
             case Configuration.ORIENTATION_PORTRAIT:
-                textViewOrientation.setText("Screen orientation: Portrait");
+                textViewOrientation.setText(String.format("%s: %s", getResources().getString(R.string.text_screen_orientation), getResources().getString(R.string.text_portrait)));
                 break;
         }
     }

@@ -42,9 +42,9 @@ public class WiFiInfo extends WiFi {
             textViewFrequency.setText(String.format("%s: %s", getResources().getString(R.string.link_frequency), wifiInfo.getFrequency() + WifiInfo.FREQUENCY_UNITS));
 
             if(boolean5GHZ) {
-                textView5GHZ.setText(R.string.yes);
+                textView5GHZ.setText(String.format("%s: %s", getResources().getString(R.string.text_5_support), getResources().getString(R.string.yes)));
             }else{
-                textView5GHZ.setText(R.string.no);
+                textView5GHZ.setText(String.format("%s: %s", getResources().getString(R.string.text_5_support), getResources().getString(R.string.no)));
             }
 
         }else {
@@ -54,20 +54,19 @@ public class WiFiInfo extends WiFi {
 
 
     }
-
+    @SuppressWarnings("deprecation")
     public void setIP(){
+
         int myIp = wifiInfo.getIpAddress();
 
-        int intMyIp3 = myIp/0x1000000;
-        int intMyIp3mod = myIp%0x1000000;
+        textViewIP.setText(String.format(
+                "%d.%d.%d.%d",
+                (myIp & 0xff),
+                (myIp >> 8 & 0xff),
+                (myIp >> 16 & 0xff),
+                (myIp >> 24 & 0xff)));
 
-        int intMyIp2 = intMyIp3mod/0x10000;
-        int intMyIp2mod = intMyIp3mod%0x10000;
-
-        int intMyIp1 = intMyIp2mod/0x100;
-        int intMyIp0 = intMyIp2mod%0x100;
-
-        textViewIP.setText(String.format("%s: %s.%s.%s.%s", "IP",String.valueOf(intMyIp0), String.valueOf(intMyIp1), String.valueOf(intMyIp2), String.valueOf(intMyIp3)));
+        //textViewIP.setText(String.format("%s: %s.%s.%s.%s", "IP",String.valueOf(intMyIp0), String.valueOf(intMyIp1), String.valueOf(intMyIp2), String.valueOf(intMyIp3)));
 
     }
 
@@ -102,8 +101,6 @@ public class WiFiInfo extends WiFi {
 
         if(wifiManager.isWifiEnabled()){
             runnable.run();
-        }else{
-
         }
 
 

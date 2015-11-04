@@ -16,15 +16,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp" >
-
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true" >
 
                     <TextView
                         android:id="@+id/label_sensor_name"
@@ -43,9 +34,8 @@
                         android:text="@string/action_about"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textColor="#fff"
-                        android:textStyle="bold" />
-                </RelativeLayout>
-            </RelativeLayout>
+                        android:textStyle="bold"
+                        android:layout_marginEnd="20dp"/>
 
             <TextView
                 android:id="@+id/text_header_introduction_0"
@@ -66,50 +56,13 @@
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="#fff" />
 
-            <TextView
-                android:id="@+id/text_header_introduction_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text=""
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="#fff"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/text_introduction_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text=""
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="#fff" />
-
-            <TextView
-                android:id="@+id/text_header_introduction_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text=""
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="#fff"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/text_introduction_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text=""
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="#fff" />
 
             <TextView
                 android:id="@+id/text_header_introduction_3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:text="Many, many thanks to:"
+                android:text="Thanks to:"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="#fff"
                 android:textStyle="bold" />
@@ -119,7 +72,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:text="Kircher Electronics\n\n http://kircherelectronics.com"
+                android:text="Kircher Electronics"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="#fff" />
         </LinearLayout>

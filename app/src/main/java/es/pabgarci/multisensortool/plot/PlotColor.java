@@ -1,6 +1,7 @@
 package es.pabgarci.multisensortool.plot;
 
 import android.content.Context;
+import android.support.v4.content.ContextCompat;
 
 import es.pabgarci.multisensortool.R;
 
@@ -23,6 +24,7 @@ public class PlotColor
 	private int darkGreen;
 	private int darkOrange;
 	private int darkRed;
+	private int yellow;
 
 	public PlotColor(Context context)
 	{
@@ -43,6 +45,8 @@ public class PlotColor
 		darkGreen = context.getResources().getColor(R.color.dark_green);
 		darkOrange = context.getResources().getColor(R.color.dark_orange);
 		darkRed = context.getResources().getColor(R.color.dark_red);
+
+		yellow = ContextCompat.getColor(context,R.color.yellow);
 	}
 
 	public int getLightBlue()
@@ -119,4 +123,6 @@ public class PlotColor
 	{
 		return darkRed;
 	}
+
+	public int getYellow(){return yellow;}
 }
